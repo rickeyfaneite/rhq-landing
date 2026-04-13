@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RHQ — Venture Engineering Studio</title>
+  <meta name="description" content="RHQ is a one-person AI venture studio based in Miami, FL. We design, build, and ship products at the intersection of craft and intelligent systems." />
+  <meta property="og:title" content="RHQ — Venture Engineering Studio" />
+  <meta property="og:description" content="One founder. No VC. All AI. Miami, FL · Est. 2026." />
+  <meta property="og:url" content="https://ricardohq.com" />
+  <meta name="theme-color" content="#131313" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23131313'/%3E%3Ctext x='4' y='23' font-family='Manrope%2C Arial%2C sans-serif' font-weight='800' font-size='14' fill='%23e5e2e1'%3ER%3C/text%3E%3Ctext x='14' y='23' font-family='Manrope%2C Arial%2C sans-serif' font-weight='800' font-size='14' fill='%2326fedc'%3EHQ%3C/text%3E%3C/svg%3E" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,500,400&display=swap" rel="stylesheet" />
+
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-bright": "#3a3939",
+            "surface-container-lowest": "#0e0e0e",
+            "surface-dim": "#131313",
+            "surface": "#131313",
+            "surface-container": "#201f1f",
+            "surface-container-low": "#1c1b1b",
+            "surface-variant": "#353534",
+            "surface-container-high": "#2a2a2a",
+            "surface-container-highest": "#353534",
+            "on-surface": "#e5e2e1",
+            "on-surface-variant": "#b9cac4",
+            "on-background": "#e5e2e1",
+            "primary": "#d7fff3",
+            "primary-fixed": "#26fedc",
+            "primary-container": "#00f5d4",
+            "on-primary-fixed": "#00201a",
+            "on-primary-container": "#006c5c",
+            "outline-variant": "#3a4a46",
+            "secondary": "#94d3c3",
+            "secondary-container": "#0b5347",
+            "on-secondary-container": "#86c4b5",
+            "inverse-surface": "#e5e2e1",
+            "inverse-on-surface": "#313030",
+          },
+          borderRadius: {
+            DEFAULT: "0.125rem",
+            lg: "0.25rem",
+            xl: "0.5rem",
+            full: "0.75rem",
+          },
+          fontFamily: {
+            headline: ["Manrope"],
+            body: ["Inter"],
+            label: ["Inter"],
+          },
+        },
+      },
+    }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: #131313;
+      color: #e5e2e1;
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background-color: #00f5d4;
+      color: #00201a;
+    }
+
+    /* ── Nav Glass ── */
+    .nav-glass {
+      background: rgba(19, 19, 19, 0.6);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+
+    /* ── Hero dot grid ── */
+    .hero-dot-grid {
+      background-image: radial-gradient(#3a4a46 1px, transparent 1px);
+      background-size: 32px 32px;
+      opacity: 0.15;
+    }
+
+    /* ── Hero emerald glow ── */
+    .hero-glow {
+      background: radial-gradient(ellipse 60% 40% at 50% 100%, rgba(0, 245, 212, 0.06) 0%, transparent 70%);
+    }
+
+    /* ── Pulsing dot ── */
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.45; transform: scale(0.8); }
+    }
+    .pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
+
+    /* ── Agent blink ── */
+    @keyframes agent-blink {
+      0%, 100% { opacity: 0.85; }
+      50%       { opacity: 0.15; }
+    }
+    .agent-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: #26fedc;
+      animation: agent-blink 2.4s ease-in-out infinite;
+      opacity: 0.3;
+    }
+    .agent-dot.lit { opacity: 0.85; }
+
+    /* ── Entrance animations ── */
+    .anim-up {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .anim-up.visible { opacity: 1; transform: translateY(0); }
+    .anim-up.d1 { transition-delay: 0.09s; }
+    .anim-up.d2 { transition-delay: 0.18s; }
+    .anim-up.d3 { transition-delay: 0.27s; }
+    .anim-up.d4 { transition-delay: 0.36s; }
+    .anim-up.d5 { transition-delay: 0.45s; }
+
+    /* ── Inline SVG icons ── */
+    .icon { display:inline-block; vertical-align:-0.15em; flex-shrink:0; }
+
+    /* ── Buttons ── */
+    .btn-primary {
+      background: linear-gradient(to bottom right, #d7fff3, #00f5d4);
+      color: #00201a;
+      font-weight: 700;
+      font-family: 'Inter', sans-serif;
+      transition: filter 0.2s;
+    }
+    .btn-primary:hover { filter: brightness(0.92); }
+
+    .btn-ghost {
+      background: transparent;
+      border: 1px solid #3a4a46;
+      color: #b9cac4;
+      font-family: 'Inter', sans-serif;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost:hover { border-color: #26fedc; color: #26fedc; }
+
+    /* ── Tech chips ── */
+    .tech-chip {
+      display: inline-block;
+      background: #201f1f;
+      border: 1px solid #3a4a46;
+      color: #b9cac4;
+      font-size: 0.68rem;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      letter-spacing: 0.035em;
+      padding: 0.18rem 0.5rem;
+      border-radius: 0.25rem;
+    }
+
+    /* ── Status badges ── */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.63rem;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      padding: 0.22rem 0.65rem;
+      border-radius: 0.25rem;
+      text-transform: uppercase;
+    }
+    .badge-live  { background: rgba(0,245,212,0.07);  border: 1px solid rgba(0,245,212,0.22);  color: #26fedc; }
+    .badge-dev   { background: rgba(234,179,8,0.07);  border: 1px solid rgba(234,179,8,0.22);  color: #eab308; }
+    .badge-stealth{ background: rgba(90,90,90,0.09); border: 1px solid rgba(90,90,90,0.22);  color: #888; }
+    .badge-early { background: rgba(148,211,195,0.07); border: 1px solid rgba(148,211,195,0.22); color: #94d3c3; }
+
+    /* ── Section label ── */
+    .label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.63rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #b9cac4;
+    }
+
+    /* ── Bullet items ── */
+    .bullet::before {
+      content: '—';
+      color: #26fedc;
+      margin-right: 0.55rem;
+      font-weight: 300;
+    }
+
+    /* ── Project card ── */
+    .project-card {
+      background: #1c1b1b;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      transition: background 0.25s;
+    }
+    .project-card:hover { background: #201f1f; }
+
+    /* ── Infra card ── */
+    .infra-card {
+      background: #201f1f;
+      border-radius: 0.5rem;
+      transition: background 0.25s;
+    }
+    .infra-card:hover { background: #2a2a2a; }
+
+    /* ── Settled brand block ── */
+    .settled-brand {
+      background: #F3EDE3;
+    }
+
+    /* ── Tenue brand block ── */
+    .tenue-brand { background: #0E0C0A; }
+
+    /* ── Paperclip brand block ── */
+    .paperclip-brand { background: #0e0e0e; }
+
+    /* ── Newsletter brand block ── */
+    .newsletter-brand {
+      background: #0e0e0e;
+    }
+    .newsletter-brand::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg, transparent, transparent 23px,
+        rgba(58,74,70,0.15) 23px, rgba(58,74,70,0.15) 24px
+      );
+      pointer-events: none;
+    }
+
+    /* ── Footer links ── */
+    .footer-link {
+      color: #b9cac4;
+      font-size: 0.875rem;
+      transition: color 0.2s;
+      text-decoration: none;
+    }
+    .footer-link:hover { color: #26fedc; }
+
+    /* ── Nav link ── */
+    .nav-link {
+      color: #b9cac4;
+      font-size: 0.875rem;
+      font-family: 'Inter', sans-serif;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: #e5e2e1; }
+
+    /* ── Stat number ── */
+    .stat-num {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 800;
+      color: #26fedc;
+      line-height: 1;
+    }
+
+    /* ── Mobile menu ── */
+    #mobile-menu {
+      display: none;
+      background: rgba(19,19,19,0.98);
+      backdrop-filter: blur(20px);
+    }
+    #mobile-menu.open { display: flex; }
+
+    @media (max-width: 767px) { .desktop-nav { display: none !important; } }
+    @media (min-width: 768px) { .mobile-toggle { display: none !important; } }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #131313; }
+    ::-webkit-scrollbar-thumb { background: #353534; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #3a4a46; }
+  </style>
+</head>
+
+<body class="bg-surface text-on-surface">
+
+  <!-- ======================================================
+       NAVIGATION
+  ====================================================== -->
+  <nav class="nav-glass fixed top-0 left-0 right-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
+
+      <!-- Logomark -->
+      <a href="#" class="font-headline font-black text-on-surface tracking-[-0.045em] uppercase text-lg select-none">
+        R<span class="text-primary-fixed">HQ</span>
+      </a>
+
+      <!-- Desktop links -->
+      <div class="desktop-nav flex items-center gap-8">
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#stack" class="nav-link">Stack</a>
+        <a href="#studio" class="nav-link">Studio</a>
+      </div>
+
+      <!-- Right: CTA + mobile toggle -->
+      <div class="flex items-center gap-4">
+        <a href="mailto:ricardo@ricardohq.com"
+           class="btn-primary hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm">
+          Get in touch
+        </a>
+        <button class="mobile-toggle text-on-surface-variant p-1" onclick="toggleMobileMenu()" aria-label="Menu">
+          <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile dropdown -->
+    <div id="mobile-menu" class="flex-col px-6 pb-6 gap-1 border-t border-outline-variant/30">
+      <a href="#projects" class="nav-link block py-3 border-b border-outline-variant/20" onclick="toggleMobileMenu()">Projects</a>
+      <a href="#stack"    class="nav-link block py-3 border-b border-outline-variant/20" onclick="toggleMobileMenu()">Stack</a>
+      <a href="#studio"   class="nav-link block py-3" onclick="toggleMobileMenu()">Studio</a>
+      <a href="mailto:ricardo@ricardohq.com"
+         class="btn-primary inline-flex justify-center items-center gap-2 w-full py-3 rounded-full text-sm mt-4">
+        Get in touch
+      </a>
+    </div>
+  </nav>
+
+
+  <!-- ======================================================
+       HERO
+  ====================================================== -->
+  <section class="relative min-h-screen flex items-center overflow-hidden pt-16">
+    <!-- Hero background image -->
+    <div class="absolute inset-0 pointer-events-none"
+         style="background-image: url('hero-bg.jpg');
+                background-size: cover;
+                background-position: center top;
+                background-repeat: no-repeat;
+                opacity: 0.22;
+                filter: saturate(0.4) brightness(0.9);">
+    </div>
+    <!-- Gradient overlays: darken left for text, fade bottom to surface -->
+    <div class="absolute inset-0 pointer-events-none"
+         style="background: linear-gradient(
+           105deg,
+           rgba(19,19,19,0.92) 0%,
+           rgba(19,19,19,0.70) 45%,
+           rgba(19,19,19,0.20) 75%,
+           rgba(19,19,19,0.10) 100%
+         );">
+    </div>
+    <!-- Bottom fade to surface -->
+    <div class="absolute bottom-0 left-0 right-0 pointer-events-none"
+         style="height: 40%; background: linear-gradient(to bottom, transparent, #131313);">
+    </div>
+    <!-- Dot grid overlay -->
+    <div class="hero-dot-grid absolute inset-0 pointer-events-none"></div>
+    <!-- Emerald radial glow -->
+    <div class="hero-glow absolute inset-0 pointer-events-none"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 py-28 w-full">
+      <!-- 60% left column -->
+      <div class="max-w-3xl">
+
+        <!-- Eyebrow Intelligence Indicator -->
+        <div class="anim-up mb-10">
+          <div class="inline-flex items-center gap-2.5 bg-surface-container-low border border-outline-variant rounded-full px-4 py-2">
+            <span class="w-2 h-2 rounded-full bg-primary-fixed flex-shrink-0 pulse-dot"></span>
+            <span class="label" style="font-size:0.58rem; letter-spacing:0.12em;">
+              Venture Engineering Studio &nbsp;·&nbsp; Miami, FL &nbsp;·&nbsp; Est. 2026
+            </span>
+          </div>
+        </div>
+
+        <!-- H1 -->
+        <h1 class="anim-up d1 font-headline font-extrabold text-on-surface leading-[0.93] tracking-[-0.04em] mb-8"
+            style="font-size: clamp(3rem, 7.5vw, 5.75rem);">
+          One founder.<br/>
+          <span class="text-primary-fixed">No VC.</span><br/>
+          All AI.
+        </h1>
+
+        <!-- Subtext -->
+        <p class="anim-up d2 text-on-surface-variant leading-relaxed mb-12 max-w-xl"
+           style="font-size: clamp(1rem, 1.8vw, 1.15rem);">
+          RHQ is a one-person AI venture studio. We design, build, and ship
+          products at the intersection of craft and intelligent systems — from consumer
+          apps to autonomous agent infrastructure.
+        </p>
+
+        <!-- CTAs -->
+        <div class="anim-up d3 flex flex-wrap items-center gap-4">
+          <a href="#projects"
+             class="btn-primary inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm">
+            <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
+            View Projects
+          </a>
+          <a href="#studio"
+             class="btn-ghost inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm">
+            Meet the founder
+            <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ======================================================
+       STATS BAR
+  ====================================================== -->
+  <section class="bg-surface-container-low py-14 lg:py-16">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-10 lg:gap-0 lg:divide-x lg:divide-outline-variant">
+
+        <div class="anim-up flex flex-col lg:items-center lg:px-8 gap-1.5">
+          <span class="stat-num" style="font-size: clamp(2.4rem,5vw,3.25rem);">2</span>
+          <span class="label mt-0.5">Products Live</span>
+        </div>
+
+        <div class="anim-up d1 flex flex-col lg:items-center lg:px-8 gap-1.5">
+          <span class="stat-num" style="font-size: clamp(2.4rem,5vw,3.25rem);">12+</span>
+          <span class="label mt-0.5">AI Agents Deployed</span>
+        </div>
+
+        <div class="anim-up d2 flex flex-col lg:items-center lg:px-8 gap-1.5">
+          <span class="stat-num" style="font-size: clamp(2.4rem,5vw,3.25rem);">5</span>
+          <span class="label mt-0.5">Active Projects</span>
+        </div>
+
+        <div class="anim-up d3 flex flex-col lg:items-center lg:px-8 gap-1.5">
+          <span class="stat-num" style="font-size: clamp(2.4rem,5vw,3.25rem);">97%</span>
+          <span class="label mt-0.5">Target Autonomy Rate</span>
+        </div>
+
+        <div class="anim-up d4 flex flex-col lg:items-center lg:px-8 gap-1.5">
+          <span class="stat-num" style="font-size: clamp(2.4rem,5vw,3.25rem);">$0</span>
+          <span class="label mt-0.5">Monthly Infra Cost</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ======================================================
+       PROJECTS
+  ====================================================== -->
+  <section id="projects" class="bg-surface py-24 lg:py-36">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+      <!-- Section header -->
+      <div class="mb-16 lg:mb-20">
+        <div class="anim-up flex items-center gap-4 mb-4">
+          <span class="label">What we're building</span>
+          <div class="h-px flex-1 bg-outline-variant max-w-xs"></div>
+        </div>
+        <h2 class="anim-up d1 font-headline font-bold text-on-surface tracking-tight mb-5"
+            style="font-size: clamp(1.9rem,4.5vw,3rem);">
+          Five bets on the future.
+        </h2>
+        <p class="anim-up d2 text-on-surface-variant text-base leading-relaxed max-w-2xl">
+          Each product is a real bet on how AI changes the way people work, dress, and operate businesses.
+          Built lean, deployed fast, running on free tiers.
+        </p>
+      </div>
+
+
+      <!-- ── SETTLED — flagship, full-width card ── -->
+      <div class="anim-up project-card mb-6">
+        <div class="grid grid-cols-1 lg:grid-cols-5">
+
+          <!-- Brand identity block -->
+          <div class="settled-brand relative lg:col-span-2 overflow-hidden" style="min-height:280px;">
+            <!-- Mini landing page preview of settledapp.work -->
+            <div style="font-family:'Plus Jakarta Sans',sans-serif; background:#F3EDE3; color:#101418; height:100%; min-height:280px; display:flex; flex-direction:column; transform-origin:top left;">
+              <!-- Tiny nav bar -->
+              <div style="display:flex; align-items:center; justify-content:space-between; padding:10px 16px 10px; border-bottom:1px solid rgba(16,20,24,0.08);">
+                <span style="font-family:'Fraunces',serif; font-weight:700; font-size:13px; color:#101418; letter-spacing:-0.01em;">Settled<span style="color:#E8682A;">.</span></span>
+                <div style="display:flex; align-items:center; gap:6px;">
+                  <span style="font-size:9px; color:#101418; opacity:0.6;">Log in</span>
+                  <span style="font-size:9px; background:#101418; color:#fff; padding:3px 8px; border-radius:100px; font-weight:600; letter-spacing:0.01em;">Start free</span>
+                </div>
+              </div>
+              <!-- Hero area -->
+              <div style="flex:1; display:flex; flex-direction:column; justify-content:center; padding:18px 16px 14px;">
+                <p style="font-size:7px; color:#E8682A; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:8px;">Contracts for Solo Service Professionals</p>
+                <p style="font-family:'Fraunces',serif; font-weight:700; font-size:22px; line-height:1.15; color:#101418; margin-bottom:4px;">Your contracts.</p>
+                <p style="font-family:'Fraunces',serif; font-weight:700; font-size:22px; line-height:1.15; color:#101418; margin-bottom:14px;">Done in 2 minutes.</p>
+                <div style="margin-bottom:16px;">
+                  <span style="display:inline-block; background:#E8682A; color:#fff; font-size:9px; font-weight:600; padding:6px 14px; border-radius:100px; letter-spacing:0.01em;">Start free — no card needed</span>
+                </div>
+              </div>
+              <!-- Trust badges strip -->
+              <div style="padding:8px 16px; border-top:1px solid rgba(16,20,24,0.08); display:flex; gap:6px; flex-wrap:wrap;">
+                <span style="font-size:7px; color:#101418; opacity:0.5;">Legally binding e-signatures</span>
+                <span style="font-size:7px; color:#101418; opacity:0.25;">·</span>
+                <span style="font-size:7px; color:#101418; opacity:0.5;">Built by a service professional</span>
+                <span style="font-size:7px; color:#101418; opacity:0.25;">·</span>
+                <span style="font-size:7px; color:#101418; opacity:0.5;">Free forever</span>
+                <span style="font-size:7px; color:#101418; opacity:0.25;">·</span>
+                <span style="font-size:7px; color:#101418; opacity:0.5;">Payments powered by Stripe</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Content -->
+          <div class="lg:col-span-3 p-8 lg:p-12 flex flex-col gap-7">
+
+            <div>
+              <div class="flex flex-wrap items-center gap-3 mb-4">
+                <span class="badge badge-live">
+                  <span class="w-1.5 h-1.5 rounded-full bg-primary-fixed pulse-dot"></span>
+                  Live in Production
+                </span>
+                <span class="label">Contract SaaS · Solo Entrepreneurs</span>
+              </div>
+              <h3 class="font-headline font-bold text-on-surface text-2xl lg:text-3xl tracking-tight mb-3">
+                "It's settled."
+              </h3>
+              <p class="text-on-surface-variant text-sm leading-relaxed max-w-lg">
+                Multi-tenant SaaS for solo service entrepreneurs — makeup artists, photographers, wedding
+                planners, DJs, stylists, and 18+ other professions. Create a contract in under 2 minutes,
+                send it to the client, collect an e-signature, and keep the record.
+                No DocuSign pricing, no complexity.
+              </p>
+            </div>
+
+            <!-- How it works -->
+            <div>
+              <p class="label mb-3">How it works</p>
+              <div class="space-y-2">
+                <p class="bullet text-on-surface-variant text-sm">Contract builder with 22 profession-specific presets and service line items</p>
+                <p class="bullet text-on-surface-variant text-sm">Token-based public signing page — client signs without creating an account</p>
+                <p class="bullet text-on-surface-variant text-sm">Server-side PDF generation with embedded signature + audit trail emailed via Resend</p>
+              </div>
+            </div>
+
+            <!-- Stack -->
+            <div>
+              <div class="flex flex-wrap gap-1.5 mb-3">
+                <span class="tech-chip">Next.js 14</span>
+                <span class="tech-chip">TypeScript</span>
+                <span class="tech-chip">Tailwind</span>
+                <span class="tech-chip">Supabase</span>
+                <span class="tech-chip">@react-pdf/renderer</span>
+                <span class="tech-chip">Resend</span>
+                <span class="tech-chip">Vercel</span>
+              </div>
+              <p class="text-on-surface-variant text-xs leading-relaxed">
+                <span class="text-on-surface font-semibold">Free tiers:</span>
+                &nbsp;Vercel (hosting + deployments) · Supabase (Postgres + Auth + Storage + RLS) · Resend (email delivery)
+              </p>
+            </div>
+
+            <a href="https://settledapp.work" target="_blank" rel="noopener"
+               class="inline-flex items-center gap-1.5 text-primary-fixed text-sm font-medium w-fit
+                      transition-all hover:gap-3">
+              <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              settledapp.work
+            </a>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Row: Tenue + Paperclip -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+
+        <!-- ── TENUE ── -->
+        <div class="anim-up d1 project-card">
+
+          <!-- Tenue brand block — dark, fashion editorial -->
+          <div class="tenue-brand relative overflow-hidden" style="min-height:280px;">
+            <!-- Mini landing page preview of tenueapp.com -->
+            <div style="font-family:'Satoshi',sans-serif; background:#0E0C0A; color:#FAF6F1; height:100%; min-height:280px; display:flex; flex-direction:column;">
+              <!-- Tiny nav bar -->
+              <div style="display:flex; align-items:center; justify-content:space-between; padding:10px 16px; border-bottom:1px solid rgba(250,246,241,0.07);">
+                <span style="font-size:13px; font-weight:700; color:#FAF6F1; letter-spacing:-0.01em;"><span style="color:#B8663A;">T.</span> Tenue</span>
+                <span style="font-size:9px; background:#B8663A; color:#fff; padding:3px 9px; border-radius:100px; font-weight:600;">Get early access</span>
+              </div>
+              <!-- Main content: two columns -->
+              <div style="flex:1; display:flex; padding:14px 16px; gap:12px; overflow:hidden;">
+                <!-- Left column: copy -->
+                <div style="flex:0 0 55%; display:flex; flex-direction:column; justify-content:center; padding-right:4px;">
+                  <p style="font-size:7px; color:#B8663A; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:8px;">AI-Powered Digital Closet</p>
+                  <p style="font-size:19px; font-weight:700; line-height:1.2; color:#FAF6F1; margin-bottom:2px;">Your closet,</p>
+                  <p style="font-size:19px; font-weight:700; line-height:1.2; margin-bottom:12px;"><em style="color:#B8663A; font-style:italic;">finally</em> <span style="color:#FAF6F1;">intelligent.</span></p>
+                  <div style="display:flex; align-items:center; gap:4px; margin-top:4px;">
+                    <span style="font-size:9px; color:#B8663A; letter-spacing:0.01em;">★★★★★</span>
+                    <span style="font-size:8px; color:#FAF6F1; opacity:0.5;">Loved by wardrobe minimalists</span>
+                  </div>
+                </div>
+                <!-- Right column: 2x2 image grid -->
+                <div style="flex:0 0 45%; display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr; gap:5px; overflow:hidden;">
+                  <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=600&h=800&q=80&fit=crop&auto=format" alt="" style="width:100%; height:120px; object-fit:cover; border-radius:8px; display:block;" />
+                  <img src="https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?w=600&h=800&q=80&fit=crop&auto=format" alt="" style="width:100%; height:120px; object-fit:cover; border-radius:8px; display:block;" />
+                  <img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?w=600&h=800&q=80&fit=crop&auto=format" alt="" style="width:100%; height:120px; object-fit:cover; border-radius:8px; display:block;" />
+                  <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=600&h=800&q=80&fit=crop&auto=format" alt="" style="width:100%; height:120px; object-fit:cover; border-radius:8px; display:block;" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-7 flex flex-col gap-5">
+            <div>
+              <div class="flex flex-wrap items-center gap-3 mb-3">
+                <span class="badge badge-dev">
+                  <span class="w-1.5 h-1.5 rounded-full bg-yellow-400"></span>
+                  In Development
+                </span>
+                <span class="label">AI Wardrobe · Consumer · iOS</span>
+              </div>
+              <h3 class="font-headline font-bold text-on-surface text-xl tracking-tight mb-2">Tenue</h3>
+              <p class="text-on-surface-variant text-sm leading-relaxed">
+                AI-powered wardrobe assistant that analyzes your clothing with Claude, suggests outfits
+                based on your style profile, weather, and calendar, and helps you dress intentionally.
+                Where editorial luxury meets practical AI.
+              </p>
+            </div>
+
+            <div>
+              <p class="label mb-2.5">How the AI works</p>
+              <div class="space-y-1.5">
+                <p class="bullet text-on-surface-variant text-sm">Claude API analyzes uploaded garment photos — identifies category, color, formality, occasion fit</p>
+                <p class="bullet text-on-surface-variant text-sm">Cloudinary handles media storage, transformation, and optimized delivery of wardrobe images</p>
+                <p class="bullet text-on-surface-variant text-sm">Capacitor wraps the Next.js app into a native iOS binary for App Store distribution</p>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex flex-wrap gap-1.5 mb-2.5">
+                <span class="tech-chip">Next.js</span>
+                <span class="tech-chip">Supabase</span>
+                <span class="tech-chip">Cloudinary</span>
+                <span class="tech-chip">Anthropic Claude API</span>
+                <span class="tech-chip">Capacitor</span>
+                <span class="tech-chip">iOS App Store</span>
+              </div>
+              <p class="text-on-surface-variant text-xs">
+                <span class="text-on-surface font-semibold">Free tiers:</span>
+                &nbsp;Supabase · Cloudinary · Vercel · GCP credits (applying via Google for Startups)
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── PAPERCLIP ── -->
+        <div class="anim-up d2 project-card" style="background:#151515;">
+
+          <!-- Paperclip brand block — agent grid -->
+          <div class="paperclip-brand min-h-[220px] flex flex-col items-center justify-center p-8 gap-5">
+            <div id="agent-grid" class="grid gap-2.5" style="grid-template-columns: repeat(8, 5px);"></div>
+            <p class="label" style="color:#b9cac4; font-size:0.6rem; letter-spacing:0.14em;">12 agents · 5 companies</p>
+          </div>
+
+          <div class="p-7 flex flex-col gap-5">
+            <div>
+              <div class="flex flex-wrap items-center gap-3 mb-3">
+                <span class="badge badge-stealth">
+                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-500"></span>
+                  Stealth
+                </span>
+                <span class="label">Agent Orchestration</span>
+              </div>
+              <h3 class="font-headline font-bold text-on-surface text-xl tracking-tight mb-2">Paperclip</h3>
+              <p class="text-on-surface-variant text-sm leading-relaxed">
+                The operating layer for autonomous business operations. 12 AI agents deployed across
+                5 companies, running in passive observation mode. When activated, Paperclip agents handle
+                research, content creation, outreach, reporting, and decision-support with minimal
+                human oversight.
+              </p>
+            </div>
+
+            <div>
+              <div class="flex flex-wrap gap-1.5 mb-3">
+                <span class="tech-chip">Claude API</span>
+                <span class="tech-chip">OpenRouter</span>
+                <span class="tech-chip">MCP</span>
+                <span class="tech-chip">Supabase</span>
+                <span class="tech-chip">beehiiv</span>
+              </div>
+              <p class="text-on-surface-variant text-sm">
+                <span class="text-on-surface font-semibold">Currently powering:</span>
+                &nbsp;The AI Builder newsletter (research → write → publish, fully automated)
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Row: The AI Builder + TechSync -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+        <!-- ── THE AI BUILDER ── -->
+        <div class="anim-up project-card">
+
+          <!-- Newsletter brand block -->
+          <div class="newsletter-brand relative min-h-[180px] flex flex-col justify-center p-8 overflow-hidden">
+            <div class="relative z-10">
+              <p style="font-family:'Courier New',monospace; font-size:0.72rem; font-weight:700; letter-spacing:0.18em; color:#e5e2e1; text-transform:uppercase;">
+                The AI Builder
+              </p>
+              <div class="h-px my-3" style="background:#3a4a46;"></div>
+              <p style="font-family:'Courier New',monospace; font-size:0.65rem; letter-spacing:0.1em; color:#26fedc; opacity:0.65;">
+                Issue #001 — Weekly
+              </p>
+              <div class="mt-4 space-y-1.5">
+                <div class="h-1 rounded" style="background:#3a4a46; width:82%;"></div>
+                <div class="h-1 rounded" style="background:#3a4a46; width:68%;"></div>
+                <div class="h-1 rounded" style="background:#3a4a46; width:52%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-7 flex flex-col gap-4">
+            <div>
+              <div class="flex flex-wrap items-center gap-3 mb-3">
+                <span class="badge badge-live">
+                  <span class="w-1.5 h-1.5 rounded-full bg-primary-fixed pulse-dot"></span>
+                  Live
+                </span>
+                <span class="label">Newsletter · AI + Developer Niche</span>
+              </div>
+              <h3 class="font-headline font-bold text-on-surface text-xl tracking-tight mb-2">The AI Builder</h3>
+              <p class="text-on-surface-variant text-sm leading-relaxed">
+                Weekly newsletter for developers and founders building with AI. Curated, opinionated,
+                and written entirely by Paperclip agents. Ricardo's only input: API keys.
+                Target: 5,000 subscribers.
+              </p>
+            </div>
+            <div>
+              <span class="tech-chip">beehiiv</span>
+              <p class="text-on-surface-variant text-xs mt-3">
+                <span class="text-on-surface font-semibold">Revenue model:</span>
+                &nbsp;beehiiv ad network + affiliate partnerships
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── TECHSYNC AI ── -->
+        <div class="anim-up d1 project-card">
+
+          <!-- TechSync brand block -->
+          <div class="relative min-h-[180px] flex flex-col justify-center p-8 overflow-hidden"
+               style="background:#0f1814;">
+            <div class="absolute inset-0 pointer-events-none"
+                 style="background:radial-gradient(ellipse 70% 70% at 50% 50%, rgba(0,245,212,0.045) 0%, transparent 70%);"></div>
+            <div class="relative z-10">
+              <p class="font-headline font-bold tracking-[-0.02em] text-xl" style="color:#26fedc; opacity:0.78;">
+                TechSync<span class="font-light"> AI</span>
+              </p>
+              <p class="label mt-1" style="color:#3a4a46; font-size:0.58rem;">Autonomous Marketplace</p>
+              <div class="flex items-center gap-2 mt-4">
+                <span class="w-2 h-2 rounded-full" style="background:#26fedc; opacity:0.6;"></span>
+                <span class="w-2 h-2 rounded-full" style="background:#26fedc; opacity:0.35;"></span>
+                <span class="w-2 h-2 rounded-full" style="background:#26fedc; opacity:0.15;"></span>
+                <span class="label ml-1" style="color:#3a4a46; font-size:0.58rem;">Initializing…</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-7 flex flex-col gap-4">
+            <div>
+              <div class="flex flex-wrap items-center gap-3 mb-3">
+                <span class="badge badge-early">
+                  <span class="w-1.5 h-1.5 rounded-full" style="background:#94d3c3;"></span>
+                  Early Stage
+                </span>
+                <span class="label">AI Marketplace</span>
+              </div>
+              <h3 class="font-headline font-bold text-on-surface text-xl tracking-tight mb-2">TechSync AI</h3>
+              <p class="text-on-surface-variant text-sm leading-relaxed">
+                Autonomous marketplace connecting startups with vetted tech solutions using generative AI.
+                Target: $4,500–$7,000/month revenue, 97% autonomous operation,
+                under 2 hours/week of human oversight.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ======================================================
+       INFRASTRUCTURE
+  ====================================================== -->
+  <section id="stack" class="bg-surface-container-low py-24 lg:py-36">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+      <div class="mb-16">
+        <div class="anim-up flex items-center gap-4 mb-4">
+          <span class="label">Running lean on free tiers</span>
+          <div class="h-px flex-1 bg-outline-variant max-w-xs"></div>
+        </div>
+        <h2 class="anim-up d1 font-headline font-bold text-on-surface tracking-tight mb-5"
+            style="font-size: clamp(1.9rem,4.5vw,3rem);">
+          Enterprise-grade stack.<br class="hidden sm:block"/>Startup-grade cost.
+        </h2>
+        <p class="anim-up d2 text-on-surface-variant text-base max-w-xl leading-relaxed">
+          Every product runs on free and startup tiers. Zero infrastructure cost at current scale.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+
+        <div class="anim-up infra-card p-6 flex flex-col gap-3">
+          <div class="flex items-center gap-3">
+            <svg class="icon text-primary-fixed" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg>
+            <p class="font-label font-semibold text-on-surface text-sm">Vercel</p>
+          </div>
+          <p class="text-on-surface-variant text-xs leading-relaxed">Hosting + CI/CD for Settled + Tenue</p>
+          <p class="label" style="font-size:0.58rem; color:#26fedc; opacity:0.65; margin-top:auto;">Hobby tier — unlimited deploys</p>
+        </div>
+
+        <div class="anim-up d1 infra-card p-6 flex flex-col gap-3">
+          <div class="flex items-center gap-3">
+            <svg class="icon text-primary-fixed" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+            <p class="font-label font-semibold text-on-surface text-sm">Supabase</p>
+          </div>
+          <p class="text-on-surface-variant text-xs leading-relaxed">Postgres + Auth + Storage + RLS for all apps</p>
+          <p class="label" style="font-size:0.58rem; color:#26fedc; opacity:0.65; margin-top:auto;">2 free projects, 500MB each</p>
+        </div>
+
+        <div class="anim-up d2 infra-card p-6 flex flex-col gap-3">
+          <div class="flex items-center gap-3">
+            <svg class="icon text-primary-fixed" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <p class="font-label font-semibold text-on-surface text-sm">Cloudflare</p>
+          </div>
+          <p class="text-on-surface-variant text-xs leading-relaxed">DNS, CDN, Tunnel for homelab, DDoS protection</p>
+          <p class="label" style="font-size:0.58rem; color:#26fedc; opacity:0.65; margin-top:auto;">Free tier — all core features</p>
+        </div>
+
+        <div class="anim-up d3 infra-card p-6 flex flex-col gap-3">
+          <div class="flex items-center gap-3">
+            <svg class="icon text-primary-fixed" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg>
+            <p class="font-label font-semibold text-on-surface text-sm">Anthropic API</p>
+          </div>
+          <p class="text-on-surface-variant text-xs leading-relaxed">Claude powers Tenue AI + Settled AI contract builder</p>
+          <p class="label" style="font-size:0.58rem; color:#26fedc; opacity:0.65; margin-top:auto;">Pay-per-token, startup credits applying</p>
+        </div>
+
+        <div class="anim-up infra-card p-6 flex flex-col gap-3">
+          <div class="flex items-center gap-3">
+            <svg class="icon text-primary-fixed" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+            <p class="font-label font-semibold text-on-surface text-sm">Cloudinary</p>
+          </div>
+          <p class="text-on-surface-variant text-xs leading-relaxed">Tenue media storage and image transformation</p>
+          <p class="label" style="font-size:0.58rem; color:#26fedc; opacity:0.65; margin-top:auto;">25 credits/month free</p>
+        </div>
+
+        <div class="anim-up d1 infra-card p-6 flex flex-col gap-3">
+          <div class="flex items-center gap-3">
+            <svg class="icon text-primary-fixed" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            <p class="font-label font-semibold text-on-surface text-sm">Resend</p>
+          </div>
+          <p class="text-on-surface-variant text-xs leading-relaxed">Transactional email for Settled (contracts, signatures)</p>
+          <p class="label" style="font-size:0.58rem; color:#26fedc; opacity:0.65; margin-top:auto;">3,000 emails/month free</p>
+        </div>
+
+        <div class="anim-up d2 infra-card p-6 flex flex-col gap-3">
+          <div class="flex items-center gap-3">
+            <svg class="icon text-primary-fixed" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/></svg>
+            <p class="font-label font-semibold text-on-surface text-sm">beehiiv</p>
+          </div>
+          <p class="text-on-surface-variant text-xs leading-relaxed">Newsletter platform for The AI Builder</p>
+          <p class="label" style="font-size:0.58rem; color:#26fedc; opacity:0.65; margin-top:auto;">Scale plan (startup discount applying)</p>
+        </div>
+
+        <div class="anim-up d3 infra-card p-6 flex flex-col gap-3">
+          <div class="flex items-center gap-3">
+            <svg class="icon text-primary-fixed" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+            <p class="font-label font-semibold text-on-surface text-sm">GCP</p>
+          </div>
+          <p class="text-on-surface-variant text-xs leading-relaxed">Cloud infrastructure for Tenue AI workloads</p>
+          <p class="label" style="font-size:0.58rem; color:#26fedc; opacity:0.65; margin-top:auto;">Applying via Google for Startups ($350K)</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ======================================================
+       ABOUT / STUDIO
+  ====================================================== -->
+  <section id="studio" class="bg-surface py-24 lg:py-36">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-20 items-start">
+
+        <!-- Left 40% — Founder card -->
+        <div class="anim-up lg:col-span-2">
+          <div class="rounded-xl p-8 flex flex-col gap-6" style="background:#353534;">
+
+            <!-- RF monogram -->
+            <div class="w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0" style="background:#201f1f;">
+              <span class="font-headline font-black text-xl text-primary-fixed tracking-tight">RF</span>
+            </div>
+
+            <div>
+              <p class="font-headline font-bold text-on-surface text-xl tracking-tight">Ricardo Faneite</p>
+              <p class="label mt-1">Founder · RHQ LLC</p>
+            </div>
+
+            <p class="text-on-surface-variant text-sm leading-relaxed">
+              Solo founder, full-stack developer, and AI systems architect building multiple products
+              simultaneously from Miami, FL. Formerly in enterprise networking and infrastructure —
+              now building consumer and SaaS products powered by Claude.
+            </p>
+
+            <!-- Tags -->
+            <div class="flex flex-wrap gap-2">
+              <span class="tech-chip">Miami, FL</span>
+              <span class="tech-chip">EN / ES</span>
+              <span class="tech-chip">Florida LLC</span>
+              <span class="tech-chip">CCNA</span>
+              <span class="tech-chip">CCNP</span>
+              <span class="tech-chip">AWS CCP</span>
+            </div>
+
+            <!-- Contact links -->
+            <div class="flex flex-col gap-2.5 pt-4 border-t border-outline-variant">
+              <a href="https://github.com/rickeyfaneite" target="_blank" rel="noopener"
+                 class="flex items-center gap-2.5 text-on-surface-variant text-sm transition-colors hover:text-primary-fixed">
+                <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                github.com/rickeyfaneite
+              </a>
+              <a href="https://linkedin.com/in/ricardofaneite" target="_blank" rel="noopener"
+                 class="flex items-center gap-2.5 text-on-surface-variant text-sm transition-colors hover:text-primary-fixed">
+                <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+                linkedin.com/in/ricardofaneite
+              </a>
+              <a href="mailto:ricardo@ricardohq.com"
+                 class="flex items-center gap-2.5 text-on-surface-variant text-sm transition-colors hover:text-primary-fixed">
+                <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                ricardo@ricardohq.com
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Right 60% — Studio story -->
+        <div class="anim-up d2 lg:col-span-3 flex flex-col gap-8">
+
+          <div>
+            <div class="flex items-center gap-4 mb-6">
+              <span class="label">The studio</span>
+              <div class="h-px flex-1 bg-outline-variant max-w-xs"></div>
+            </div>
+            <h2 class="font-headline font-bold text-on-surface tracking-tight mb-7 leading-tight"
+                style="font-size: clamp(1.7rem,4vw,2.6rem);">
+              One founder.<br/>Five bets.<br/>All powered by AI.
+            </h2>
+            <div class="space-y-4 text-on-surface-variant text-base leading-relaxed">
+              <p>
+                RHQ is the operating entity behind a portfolio of AI-first products.
+                Founded in Miami in March 2026, it's a deliberately lean structure — one person,
+                multiple products, each designed to run with minimal human intervention.
+              </p>
+              <p>
+                The philosophy: build things with genuine craft, let AI do the heavy lifting,
+                and focus human energy on the decisions that actually matter.
+              </p>
+            </div>
+          </div>
+
+          <!-- Bilingual closing -->
+          <div class="pl-6 py-1 border-l-2 border-primary-fixed">
+            <p class="font-headline font-semibold text-on-surface text-lg italic tracking-tight">
+              "Construimos con intención. / We build with intention."
+            </p>
+          </div>
+
+          <!-- Link buttons -->
+          <div class="flex flex-wrap gap-3">
+            <a href="https://github.com/rickeyfaneite" target="_blank" rel="noopener"
+               class="btn-ghost inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm transition-all">
+              <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              GitHub
+            </a>
+            <a href="https://linkedin.com/in/ricardofaneite" target="_blank" rel="noopener"
+               class="btn-ghost inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm transition-all">
+              <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+              LinkedIn
+            </a>
+            <a href="mailto:ricardo@ricardohq.com"
+               class="btn-ghost inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm transition-all">
+              <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              Email
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ======================================================
+       CTA SECTION
+  ====================================================== -->
+  <section class="bg-surface-container-low py-24 lg:py-36">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 text-center">
+      <div class="max-w-2xl mx-auto">
+
+        <!-- Intelligence Indicator -->
+        <div class="anim-up flex justify-center mb-7">
+          <div class="inline-flex items-center gap-2.5 bg-surface-container border border-outline-variant rounded-full px-4 py-2">
+            <span class="w-2 h-2 rounded-full bg-primary-fixed flex-shrink-0 pulse-dot"></span>
+            <span class="label" style="font-size:0.58rem;">Building in public · Miami, FL · 2026</span>
+          </div>
+        </div>
+
+        <h2 class="anim-up d1 font-headline font-bold text-on-surface tracking-tight mb-6"
+            style="font-size: clamp(1.9rem,4.5vw,3rem);">
+          Ready to build the<br/>future of work?
+        </h2>
+
+        <p class="anim-up d2 text-on-surface-variant text-base leading-relaxed mb-12">
+          RHQ is currently applying to startup programs and building in public.
+          Follow the journey.
+        </p>
+
+        <div class="anim-up d3 flex flex-wrap justify-center gap-4">
+          <a href="mailto:ricardo@ricardohq.com"
+             class="btn-primary inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm">
+            <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            Get in touch
+          </a>
+          <a href="https://github.com/rickeyfaneite" target="_blank" rel="noopener"
+             class="btn-ghost inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm">
+            View on GitHub
+            <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ======================================================
+       FOOTER
+  ====================================================== -->
+  <footer style="background:#0e0e0e;" class="py-16">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-12 pb-12 border-b border-outline-variant">
+
+        <!-- Brand col -->
+        <div class="md:col-span-2">
+          <a href="#" class="font-headline font-black text-on-surface tracking-[-0.045em] uppercase text-xl">
+            R<span class="text-primary-fixed">HQ</span>
+          </a>
+          <p class="text-on-surface-variant text-sm leading-relaxed mt-4 max-w-xs">
+            A one-person AI venture studio based in Miami, FL.
+            One founder. No VC. All AI.
+          </p>
+          <div class="flex flex-wrap items-center gap-x-4 gap-y-2 mt-6">
+            <a href="https://settledapp.work" target="_blank" rel="noopener" class="footer-link">settledapp.work</a>
+            <span class="text-outline-variant text-xs">·</span>
+            <a href="https://tenueapp.com" target="_blank" rel="noopener" class="footer-link">tenueapp.com</a>
+          </div>
+        </div>
+
+        <!-- Ventures col -->
+        <div>
+          <p class="label mb-5">Ventures</p>
+          <div class="flex flex-col gap-3">
+            <a href="https://settledapp.work" target="_blank" rel="noopener" class="footer-link">Settled</a>
+            <a href="https://tenueapp.com"    target="_blank" rel="noopener" class="footer-link">Tenue</a>
+            <a href="#projects" class="footer-link">Paperclip</a>
+            <a href="#projects" class="footer-link">The AI Builder</a>
+            <a href="#projects" class="footer-link">TechSync AI</a>
+          </div>
+        </div>
+
+        <!-- Connect col -->
+        <div>
+          <p class="label mb-5">Connect</p>
+          <div class="flex flex-col gap-3">
+            <a href="https://github.com/rickeyfaneite"       target="_blank" rel="noopener" class="footer-link">GitHub</a>
+            <a href="https://linkedin.com/in/ricardofaneite" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
+            <a href="mailto:ricardo@ricardohq.com" class="footer-link">ricardo@ricardohq.com</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+        <p class="text-on-surface-variant text-xs">© 2026 RHQ LLC. All rights reserved.</p>
+        <p class="text-on-surface-variant text-xs tracking-[0.05em]">Miami, FL · Florida LLC · Building in public</p>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- ======================================================
+       SCRIPTS
+  ====================================================== -->
+  <script>
+    // ── Entrance animations ──────────────────────────
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+      { threshold: 0.07, rootMargin: '0px 0px -36px 0px' }
+    );
+    document.querySelectorAll('.anim-up').forEach(el => observer.observe(el));
+
+    // ── Mobile menu toggle ───────────────────────────
+    function toggleMobileMenu() {
+      document.getElementById('mobile-menu').classList.toggle('open');
+    }
+
+    // ── Paperclip agent dot grid ─────────────────────
+    (function buildAgentGrid() {
+      const grid = document.getElementById('agent-grid');
+      if (!grid) return;
+      const ROWS = 4, COLS = 8;
+      // Active positions (roughly matching 12 "lit" agents out of 32)
+      const litSet = new Set([0,2,4,6, 9,11,13, 17,19, 24,26,28]);
+      for (let i = 0; i < ROWS * COLS; i++) {
+        const dot = document.createElement('span');
+        dot.className = 'agent-dot' + (litSet.has(i) ? ' lit' : '');
+        dot.style.animationDelay = (Math.random() * 2.4).toFixed(2) + 's';
+        grid.appendChild(dot);
+      }
+    })();
+  </script>
+
+</body>
+</html>
