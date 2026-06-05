@@ -41,6 +41,10 @@ export const metadata: Metadata = {
     description:
       "Small, fast, focused software products. Solo, in Miami, powered by custom AI agents.",
   },
+  icons: {
+    icon: "/assets/rhq-logo.png",
+    apple: "/assets/rhq-icon-180.png",
+  },
 };
 
 export default function RootLayout({
