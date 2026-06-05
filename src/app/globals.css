@@ -6,11 +6,12 @@
 
 @theme inline {
   --font-sans: var(--font-inter);
+  --font-heading: var(--font-manrope);
 
-  --color-background: #0a0a0a;
-  --color-foreground: #ffffff;
-  --color-muted: rgba(255, 255, 255, 0.56);
-  --color-faint: rgba(255, 255, 255, 0.38);
+  --color-background: #0b0a09;
+  --color-foreground: #f4f1ee;
+  --color-muted: rgba(244, 241, 238, 0.56);
+  --color-faint: rgba(244, 241, 238, 0.36);
   --color-line: rgba(255, 255, 255, 0.10);
   --color-line-strong: rgba(255, 255, 255, 0.20);
   --color-card: rgba(8, 8, 8, 0.95);
@@ -46,18 +47,22 @@ body::before {
 }
 
 /* type */
+h1, h2, h3, h4 {
+  font-family: var(--font-heading), var(--font-inter), sans-serif;
+}
 .label {
   font-size: 12px;
   line-height: 16px;
-  font-weight: 400;
-  letter-spacing: 0.18em;
+  font-weight: 500;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--color-muted);
 }
 .display {
-  font-weight: 500;
-  letter-spacing: -0.05em;
-  line-height: 0.95;
+  font-family: var(--font-heading), var(--font-inter), sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 0.94;
   text-wrap: balance;
 }
 

@@ -64,17 +64,15 @@ export function Hero() {
         </div>
       </div>
 
-      {/* framed hero image */}
-      <div className="mx-auto max-w-[1280px] px-6 sm:px-10 py-10" style={{ borderInline: "1px solid var(--color-line)" }}>
-        <Reveal className="glass overflow-hidden">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/assets/hero-orange.png"
-            alt="Dark home-office workspace with a mini PC and warm orange accent lighting"
-            className="w-full object-cover"
-            style={{ aspectRatio: "16 / 7", objectPosition: "center 40%" }}
-          />
-        </Reveal>
+      {/* full-bleed hero image */}
+      <div style={{ borderBottom: "1px solid var(--color-line)" }}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/assets/hero-orange.png"
+          alt="Dark home-office workspace with a mini PC and warm orange accent lighting"
+          className="w-full object-cover"
+          style={{ aspectRatio: "16 / 6", objectPosition: "center 42%" }}
+        />
       </div>
     </section>
   );

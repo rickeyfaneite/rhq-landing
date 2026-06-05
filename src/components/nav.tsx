@@ -17,16 +17,16 @@ export function Nav() {
   return (
     <header className="fixed top-0 z-50 w-full glass" style={{ borderBottom: "1px solid var(--color-line)" }}>
       <div className="mx-auto flex h-16 max-w-[1280px] items-center justify-between px-6 sm:px-10">
-        <a href="#top" className="flex items-center gap-3">
-          <Logo size={34} />
-          <span className="text-[15px] font-semibold tracking-tight">
-            Ricardo<span className="text-orange">HQ</span>
+        <a href="#top" className="flex h-11 items-center gap-2.5">
+          <Logo size={38} />
+          <span className="text-[15px] font-semibold tracking-tight" style={{ fontFamily: "var(--font-heading)" }}>
+            RicardoHQ
           </span>
         </a>
 
         <nav className="hidden items-center gap-9 md:flex">
           {links.map((l) => (
-            <a key={l.href} href={l.href} className="label hover:text-[color:var(--color-foreground)] transition-colors">
+            <a key={l.href} href={l.href} className="label flex h-11 items-center hover:text-[color:var(--color-foreground)] transition-colors">
               {l.label}
             </a>
           ))}
