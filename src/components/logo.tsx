@@ -1,6 +1,6 @@
 type LogoProps = { size?: number; className?: string };
 
-// RicardoHQ mark: centered "/RHQ" — slash orange, RHQ white, near-black tile.
+// RicardoHQ mark: rounded icon tile, warm-orange frame, centered "/RHQ" in mono.
 export function Logo({ size = 40, className }: LogoProps) {
   return (
     <svg
@@ -11,17 +11,17 @@ export function Logo({ size = 40, className }: LogoProps) {
       role="img"
       aria-label="RicardoHQ logo"
     >
-      <rect width="40" height="40" rx="6" fill="#111111" stroke="rgba(255,255,255,0.14)" />
+      <rect x="1" y="1" width="38" height="38" rx="11" fill="#141414" stroke="#d2562f" strokeWidth="1.5" />
       <text
         x="20"
-        y="27"
+        y="26"
         textAnchor="middle"
-        fontFamily="var(--font-inter), Inter, sans-serif"
+        style={{ fontFamily: "var(--font-mono), ui-monospace, monospace" }}
         fontWeight="700"
-        fontSize="13.5"
-        letterSpacing="-0.4"
+        fontSize="11"
+        letterSpacing="-0.5"
       >
-        <tspan fill="#ff4500">/</tspan>
+        <tspan fill="#d2562f">/</tspan>
         <tspan fill="#ffffff">RHQ</tspan>
       </text>
     </svg>

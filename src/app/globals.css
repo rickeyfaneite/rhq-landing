@@ -14,9 +14,11 @@
   --color-line: rgba(255, 255, 255, 0.10);
   --color-line-strong: rgba(255, 255, 255, 0.20);
   --color-card: rgba(8, 8, 8, 0.95);
-  --color-orange: #ff4500;
+  --color-orange: #d2562f;
+  --color-orange-soft: #e0794f;
+  --color-orange-deep: #b8431f;
   --color-orange-ink: #0a0a0a;
-  --color-yellow: #fff80a;
+  --color-yellow: #f5c451;
 }
 
 html {
@@ -39,8 +41,8 @@ body::before {
   pointer-events: none;
   z-index: 0;
   background:
-    radial-gradient(60% 50% at 82% -5%, rgba(255, 69, 0, 0.12), transparent 70%),
-    radial-gradient(45% 38% at 0% 105%, rgba(255, 248, 10, 0.05), transparent 70%);
+    radial-gradient(60% 50% at 82% -5%, rgba(210, 86, 47, 0.10), transparent 70%),
+    radial-gradient(45% 38% at 0% 105%, rgba(245, 196, 81, 0.045), transparent 70%);
 }
 
 /* type */
