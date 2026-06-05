@@ -1,99 +1,118 @@
 @import "tailwindcss";
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
 
-@custom-variant dark (&:is(.dark *));
+/* ===== Orbit • Lunar Pulse — RicardoHQ ===== */
+/* Dark editorial. Orange #FF4500 primary, yellow #FFF80A secondary, Inter, */
+/* full-bleed strong grid, glassy near-black surfaces, sharp corners.       */
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
   --font-sans: var(--font-inter);
-  --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-space-grotesk);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
-  --color-ring: var(--ring);
-  --color-input: var(--input);
-  --color-border: var(--border);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
-  --color-card: var(--card);
-  --radius-sm: calc(var(--radius) * 0.6);
-  --radius-md: calc(var(--radius) * 0.8);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.4);
-  --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.2);
-  --radius-4xl: calc(var(--radius) * 2.6);
-  --color-teal: #2DD4BF;
-  --color-teal-light: #5EEAD4;
+
+  --color-background: #0a0a0a;
+  --color-foreground: #ffffff;
+  --color-muted: rgba(255, 255, 255, 0.56);
+  --color-faint: rgba(255, 255, 255, 0.38);
+  --color-line: rgba(255, 255, 255, 0.10);
+  --color-line-strong: rgba(255, 255, 255, 0.20);
+  --color-card: rgba(8, 8, 8, 0.95);
+  --color-orange: #ff4500;
+  --color-orange-ink: #0a0a0a;
+  --color-yellow: #fff80a;
 }
 
-/* Always dark — single-page dark-mode site */
-:root {
-  --background: #0B0F1A;
-  --foreground: #E5E7EB;
-  --card: #111726;
-  --card-foreground: #E5E7EB;
-  --popover: #111726;
-  --popover-foreground: #E5E7EB;
-  --primary: #2DD4BF;
-  --primary-foreground: #0B0F1A;
-  --secondary: #1A2036;
-  --secondary-foreground: #E5E7EB;
-  --muted: #1A2036;
-  --muted-foreground: #9CA3AF;
-  --accent: #2DD4BF;
-  --accent-foreground: #0B0F1A;
-  --destructive: #EF4444;
-  --border: rgba(255, 255, 255, 0.1);
-  --input: rgba(255, 255, 255, 0.12);
-  --ring: #2DD4BF;
-  --chart-1: #2DD4BF;
-  --chart-2: #5EEAD4;
-  --chart-3: #99F6E4;
-  --chart-4: #1A2036;
-  --chart-5: #0B0F1A;
-  --radius: 0.75rem;
-  --sidebar: #111726;
-  --sidebar-foreground: #E5E7EB;
-  --sidebar-primary: #2DD4BF;
-  --sidebar-primary-foreground: #0B0F1A;
-  --sidebar-accent: #1A2036;
-  --sidebar-accent-foreground: #E5E7EB;
-  --sidebar-border: rgba(255, 255, 255, 0.1);
-  --sidebar-ring: #2DD4BF;
+html {
+  scroll-behavior: smooth;
 }
 
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-  html {
-    @apply scroll-smooth font-sans;
-  }
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
+
+/* Subtle warm vignette */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(60% 50% at 82% -5%, rgba(255, 69, 0, 0.12), transparent 70%),
+    radial-gradient(45% 38% at 0% 105%, rgba(255, 248, 10, 0.05), transparent 70%);
+}
+
+/* type */
+.label {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+.display {
+  font-weight: 500;
+  letter-spacing: -0.05em;
+  line-height: 0.95;
+  text-wrap: balance;
+}
+
+/* structural grid */
+.shell {
+  max-width: 1280px;
+  margin-inline: auto;
+  border-inline: 1px solid var(--color-line);
+}
+.glass {
+  background: var(--color-card);
+  backdrop-filter: blur(24px);
+  border: 1px solid var(--color-line);
+}
+
+/* controls */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  border-radius: 9999px;
+  padding: 12px 22px;
+  transition: all 150ms ease;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.btn-primary {
+  background: var(--color-orange);
+  color: var(--color-orange-ink);
+}
+.btn-primary:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+.btn-ghost {
+  border: 1px solid var(--color-line-strong);
+  color: var(--color-foreground);
+}
+.btn-ghost:hover {
+  border-color: var(--color-orange);
+  color: var(--color-orange);
+}
+
+/* scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 600ms ease, transform 600ms cubic-bezier(0.2, 0.6, 0, 1);
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+.text-orange { color: var(--color-orange); }
+.text-yellow { color: var(--color-yellow); }
+.bg-orange { background: var(--color-orange); }

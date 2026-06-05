@@ -1,83 +1,60 @@
 "use client";
 
 import { useState } from "react";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 
 export function Newsletter() {
   const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [done, setDone] = useState(false);
 
-  async function handleSubmit(e: React.FormEvent) {
+  async function submit(e: React.FormEvent) {
     e.preventDefault();
     if (!email) return;
-
-    setStatus("loading");
     try {
-      const res = await fetch("/api/newsletter", {
+      await fetch("/api/newsletter", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
       });
-      if (res.ok) {
-        setStatus("success");
-        setEmail("");
-      } else {
-        setStatus("error");
-      }
     } catch {
-      setStatus("error");
+      // placeholder endpoint
     }
+    setDone(true);
   }
 
   return (
-    <section id="newsletter" className="py-24 md:py-32">
-      <div className="mx-auto max-w-6xl px-6">
-        <div className="mx-auto max-w-xl rounded-2xl border border-border/50 bg-card/50 p-8 text-center md:p-12">
-          <p className="mb-3 font-mono text-sm tracking-wider text-teal uppercase">
-            Newsletter
-          </p>
-          <h2 className="font-heading text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-            The AI Builder newsletter
-          </h2>
-          <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-            Practical notes on shipping AI products. Brief case studies,
-            engineering decisions, and deployment lessons. No hype. One short
-            issue weekly.
-          </p>
+    <section id="newsletter" className="relative z-10 bg-orange text-[#0a0a0a]" style={{ borderTop: "1px solid var(--color-line)" }}>
+      <div className="mx-auto max-w-[1280px] px-6 sm:px-10 py-20">
+        <span className="label" style={{ color: "rgba(10,10,10,0.7)" }}>The AI Builder newsletter</span>
+        <h2 className="display text-[clamp(2.2rem,6vw,4.2rem)] pt-4 max-w-3xl">
+          One founder. No VC. All AI.
+        </h2>
+        <p className="text-[16px] leading-relaxed pt-5 max-w-xl" style={{ color: "rgba(10,10,10,0.78)" }}>
+          Short notes on shipping AI products solo. Engineering decisions, deployment lessons,
+          and what actually worked. One issue a week. No hype.
+        </p>
 
-          <form onSubmit={handleSubmit} className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Input
+        {done ? (
+          <p className="text-lg font-medium pt-8">You&apos;re in. Talk soon.</p>
+        ) : (
+          <form onSubmit={submit} className="flex flex-wrap gap-3 pt-8 max-w-lg">
+            <input
               type="email"
-              placeholder="you@example.com"
+              required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              required
+              placeholder="you@email.com"
               aria-label="Email address"
-              className="h-10 flex-1 bg-background/50"
+              className="flex-1 min-w-[220px] rounded-full px-5 py-3 text-[15px] outline-none"
+              style={{ background: "rgba(10,10,10,0.08)", border: "1px solid rgba(10,10,10,0.25)", color: "#0a0a0a" }}
             />
-            <Button
-              type="submit"
-              size="lg"
-              disabled={status === "loading"}
-              className="h-10 shrink-0"
-            >
-              {status === "loading" ? "Subscribing..." : "Subscribe"}
-            </Button>
+            <button type="submit" className="btn rounded-full px-6 py-3 font-medium" style={{ background: "#0a0a0a", color: "#fff" }}>
+              Subscribe
+            </button>
           </form>
-
-          {status === "success" && (
-            <p className="mt-4 text-sm text-teal">
-              You&apos;re in! Check your inbox to confirm.
-            </p>
-          )}
-          {status === "error" && (
-            <p className="mt-4 text-sm text-destructive">
-              Something went wrong. Please try again.
-            </p>
-          )}
-        </div>
+        )}
       </div>
     </section>
   );
 }
+
+export default Newsletter;

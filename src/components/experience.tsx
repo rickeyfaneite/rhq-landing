@@ -1,60 +1,53 @@
-const certifications = [
-  { name: "AWS Cloud Practitioner", abbr: "AWS CP" },
-  { name: "Microsoft Azure AZ-900", abbr: "AZ-900" },
-  { name: "Cisco CCNA", abbr: "CCNA" },
-  { name: "Cisco CCNP", abbr: "CCNP" },
-  { name: "CWNA", abbr: "CWNA" },
-  { name: "Fortinet", abbr: "Fortinet" },
+import { Reveal } from "@/components/reveal";
+
+const certs = [
+  "AWS Cloud Practitioner",
+  "Microsoft Azure AZ-900",
+  "Cisco CCNA",
+  "Cisco CCNP",
+  "CWNA",
+  "Fortinet NSE",
 ];
 
 export function Experience() {
   return (
-    <section id="experience" className="py-24 md:py-32">
-      <div className="mx-auto max-w-6xl px-6">
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-          <div>
-            <p className="mb-3 font-mono text-sm tracking-wider text-teal uppercase">
-              Experience
+    <section id="background" className="relative z-10">
+      <div className="mx-auto max-w-[1280px]" style={{ borderInline: "1px solid var(--color-line)", borderTop: "1px solid var(--color-line)" }}>
+        <div className="grid grid-cols-1 md:grid-cols-2">
+          <Reveal className="px-6 sm:px-10 py-20" style={{ borderRight: "1px solid var(--color-line)" }}>
+            <span className="label">Background</span>
+            <p className="display text-[clamp(1.7rem,3.6vw,2.6rem)] pt-5 leading-tight">
+              10+ years moving enterprise systems from architecture to{" "}
+              <span className="text-orange">production</span>.
             </p>
-            <h2 className="font-heading text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              10+ years of building
-            </h2>
-            <div className="mt-6 space-y-4 text-base leading-relaxed text-muted-foreground">
-              <p>
-                I have 10+ years in enterprise pre-sales and solutions
-                engineering, with roots in network engineering and cybersecurity.
-                I move projects from architecture through production. I write
-                reliable systems and ship customer-facing products.
-              </p>
-              <p>
-                I operate a self-hosted agent lab and build integrations end to
-                end for development and testing.
-              </p>
-            </div>
-          </div>
+            <p className="text-[15px] leading-relaxed text-[color:var(--color-muted)] pt-6 max-w-md">
+              Pre-sales and solutions engineering across MSP and cybersecurity, with roots in
+              network engineering and clinical IT. Bilingual EN/ES. I run a bare-metal homelab
+              and orchestrate my own AI agents end to end.
+            </p>
+          </Reveal>
 
-          <div>
-            <h3 className="mb-6 font-heading text-lg font-semibold text-foreground">
-              Certifications
-            </h3>
-            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-              {certifications.map((cert) => (
-                <div
-                  key={cert.abbr}
-                  className="flex items-center gap-3 rounded-lg border border-border/50 bg-card/30 px-4 py-3 transition-colors hover:border-teal/30"
-                >
-                  <div className="flex size-8 shrink-0 items-center justify-center rounded-md bg-teal/10 font-mono text-xs font-semibold text-teal">
-                    ✓
-                  </div>
-                  <span className="text-sm font-medium text-foreground">
-                    {cert.name}
-                  </span>
-                </div>
-              ))}
-            </div>
+          <div className="grid grid-cols-2">
+            {certs.map((c, i) => (
+              <Reveal
+                key={c}
+                delay={(i % 2) * 70}
+                className="flex items-center px-6 sm:px-8 py-8"
+                style={{
+                  borderBottom: i < certs.length - 2 ? "1px solid var(--color-line)" : "none",
+                  borderRight: i % 2 === 0 ? "1px solid var(--color-line)" : "none",
+                }}
+              >
+                <span className="text-[15px] font-medium tracking-tight">
+                  <span className="text-orange">/</span> {c}
+                </span>
+              </Reveal>
+            ))}
           </div>
         </div>
       </div>
     </section>
   );
 }
+
+export default Experience;

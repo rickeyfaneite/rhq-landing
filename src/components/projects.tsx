@@ -1,85 +1,86 @@
-import Image from "next/image";
-import { buttonVariants } from "@/components/ui/button";
+import { ArrowUpRight } from "lucide-react";
+import { Reveal } from "@/components/reveal";
 
 const projects = [
   {
-    title: "Settled",
-    description: "Digital contracts and booking for freelance pros.",
+    name: "Settled",
     status: "Live",
-    link: "https://settledapp.work",
-    image: "/assets/settled-hero.png",
+    statusColor: "var(--color-orange)",
+    blurb: "Digital contracts and booking for freelance pros. Live and taking real payments.",
+    img: "/assets/settled-hero.png",
+    href: "https://settledapp.work",
   },
   {
-    title: "Tenue",
-    description: "AI wardrobe app that recommends and organizes outfits.",
+    name: "Tenue",
     status: "Prototype",
-    link: null,
-    image: "/assets/tenue-mockup.png",
+    statusColor: "var(--color-yellow)",
+    blurb: "AI wardrobe app that organizes and recommends outfits from your own closet.",
+    img: "/assets/tenue-mockup.png",
+    href: undefined,
   },
   {
-    title: "LegalEase",
-    description: "Immigration-law automation MVP for document workflows.",
-    status: "Early pilot",
-    link: null,
-    image: "/assets/legalease-mockup.png",
+    name: "LegalEase",
+    status: "MVP",
+    statusColor: "var(--color-muted)",
+    blurb: "Immigration-law automation for document-heavy case workflows.",
+    img: "/assets/legalease-mockup.png",
+    href: undefined,
   },
 ];
 
 export function Projects() {
   return (
-    <section id="projects" className="py-24 md:py-32">
-      <div className="mx-auto max-w-6xl px-6">
-        <div className="mb-16 max-w-2xl">
-          <p className="mb-3 font-mono text-sm tracking-wider text-teal uppercase">
-            Projects
-          </p>
-          <h2 className="font-heading text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            Things I&apos;ve shipped
-          </h2>
+    <section id="projects" className="relative z-10">
+      <div className="mx-auto max-w-[1280px]" style={{ borderInline: "1px solid var(--color-line)", borderTop: "1px solid var(--color-line)" }}>
+        <div className="px-6 sm:px-10 pt-20 pb-10">
+          <span className="label">What I&apos;ve shipped</span>
+          <h2 className="display text-[clamp(2rem,5vw,3.4rem)] pt-4">Real products, in the wild.</h2>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-3">
-          {projects.map((project) => (
-            <article
-              key={project.title}
-              className="group overflow-hidden rounded-xl bg-card/50 ring-1 ring-foreground/5 transition-all hover:ring-teal/20"
+        <div className="grid grid-cols-1 md:grid-cols-3" style={{ borderTop: "1px solid var(--color-line)" }}>
+          {projects.map((p, i) => (
+            <Reveal
+              key={p.name}
+              delay={i * 90}
+              className="group flex flex-col"
+              style={{ borderRight: i < projects.length - 1 ? "1px solid var(--color-line)" : "none", borderBottom: "1px solid var(--color-line)" }}
             >
-              <div className="relative aspect-[16/10] overflow-hidden">
-                <Image
-                  src={project.image}
-                  alt={`${project.title} — ${project.description}`}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, 33vw"
+              <div className="overflow-hidden" style={{ borderBottom: "1px solid var(--color-line)" }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={p.img}
+                  alt={`${p.name} — ${p.blurb}`}
+                  className="w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                  style={{ aspectRatio: "16 / 10" }}
                 />
               </div>
-              <div className="p-6">
-                <div className="mb-2 flex items-center gap-3">
-                  <h3 className="font-heading text-lg font-semibold text-foreground">
-                    {project.title}
-                  </h3>
-                  <span className="inline-flex items-center rounded-full bg-teal/10 px-2.5 py-0.5 text-xs font-medium text-teal">
-                    {project.status}
+              <div className="flex flex-1 flex-col px-6 sm:px-8 py-7">
+                <div className="flex items-center gap-3">
+                  <h3 className="text-xl font-medium tracking-tight">{p.name}</h3>
+                  <span className="label" style={{ color: p.statusColor, letterSpacing: "0.14em" }}>
+                    {p.status}
                   </span>
                 </div>
-                <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
-                  {project.description}
+                <p className="text-[15px] leading-relaxed text-[color:var(--color-muted)] pt-2 flex-1">
+                  {p.blurb}
                 </p>
-                {project.link && (
+                {p.href && (
                   <a
-                    href={project.link}
+                    href={p.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={buttonVariants({ size: "sm", variant: "ghost" }) + " text-teal hover:text-teal-light"}
+                    className="label inline-flex items-center gap-1 pt-5 hover:text-orange transition-colors"
                   >
-                    Visit site →
+                    Visit <ArrowUpRight size={14} />
                   </a>
                 )}
               </div>
-            </article>
+            </Reveal>
           ))}
         </div>
       </div>
     </section>
   );
 }
+
+export default Projects;

@@ -1,54 +1,39 @@
 import { Logo } from "@/components/logo";
 
-const footerLinks = [
-  { label: "Services", href: "#services" },
-  { label: "Projects", href: "#projects" },
-  { label: "Experience", href: "#experience" },
-  { label: "Newsletter", href: "#newsletter" },
+const links = [
+  { href: "#work", label: "What I build" },
+  { href: "#projects", label: "Projects" },
+  { href: "#background", label: "Background" },
+  { href: "#newsletter", label: "Newsletter" },
 ];
 
 export function Footer() {
   return (
-    <footer className="border-t border-border/50 py-12">
-      <div className="mx-auto max-w-6xl px-6">
-        <div className="flex flex-col items-center gap-8 md:flex-row md:justify-between">
-          <div className="flex items-center gap-3">
-            <Logo className="size-8" />
-            <span className="font-heading text-sm font-medium text-foreground">
-              The AI Builder
+    <footer className="relative z-10" style={{ borderTop: "1px solid var(--color-line)" }}>
+      <div className="mx-auto max-w-[1280px] px-6 sm:px-10 py-12" style={{ borderInline: "1px solid var(--color-line)" }}>
+        <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
+          <a href="#top" className="flex items-center gap-3">
+            <Logo size={34} />
+            <span className="text-[15px] font-semibold tracking-tight">
+              Ricardo<span className="text-orange">HQ</span>
             </span>
-          </div>
-
-          <nav aria-label="Footer navigation">
-            <ul className="flex flex-wrap items-center justify-center gap-6">
-              {footerLinks.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className="text-sm text-muted-foreground transition-colors hover:text-teal"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-              <li>
-                <a
-                  href="mailto:hello@ricardohq.com"
-                  className="text-sm font-medium text-teal transition-colors hover:text-teal-light"
-                >
-                  Work with me
-                </a>
-              </li>
-            </ul>
+          </a>
+          <nav className="flex flex-wrap gap-7">
+            {links.map((l) => (
+              <a key={l.href} href={l.href} className="label hover:text-[color:var(--color-foreground)] transition-colors">
+                {l.label}
+              </a>
+            ))}
           </nav>
+          <a href="mailto:hello@ricardohq.com" className="btn btn-ghost">hello@ricardohq.com</a>
         </div>
-
-        <div className="mt-8 border-t border-border/30 pt-8 text-center">
-          <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Ricardo Faneite. Built with engineering rigor.
-          </p>
+        <div className="flex flex-col gap-2 pt-10 sm:flex-row sm:items-center sm:justify-between">
+          <span className="label">Built solo in Miami · One founder. No VC. All AI.</span>
+          <span className="label">© 2026 RicardoHQ</span>
         </div>
       </div>
     </footer>
   );
 }
+
+export default Footer;
