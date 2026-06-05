@@ -48,8 +48,21 @@ export function Services() {
                   borderRight: i % 2 === 0 ? "1px solid var(--color-line)" : "none",
                 }}
               >
-                <Icon size={26} strokeWidth={1.4} className="text-orange" />
-                <h3 className="text-xl font-medium tracking-tight pt-5">{s.title}</h3>
+                <div className="flex items-center justify-between">
+                  <span
+                    className="grid size-12 place-items-center rounded-xl border transition-all duration-300 group-hover:-translate-y-0.5 group-hover:[border-color:var(--color-orange)] group-hover:[box-shadow:0_10px_34px_rgba(210,86,47,0.18)]"
+                    style={{ borderColor: "var(--color-line-strong)", background: "linear-gradient(160deg, rgba(210,86,47,0.16), rgba(210,86,47,0.03))" }}
+                  >
+                    <Icon size={22} strokeWidth={1.6} className="text-orange" />
+                  </span>
+                  <span
+                    className="text-xs tracking-widest text-[color:var(--color-faint)]"
+                    style={{ fontFamily: "var(--font-mono)" }}
+                  >
+                    0{i + 1}
+                  </span>
+                </div>
+                <h3 className="text-xl font-medium tracking-tight pt-6">{s.title}</h3>
                 <p className="text-[15px] leading-relaxed text-[color:var(--color-muted)] pt-2 max-w-md">
                   {s.desc}
                 </p>

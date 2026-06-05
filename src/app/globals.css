@@ -123,3 +123,15 @@ h1, h2, h3, h4 {
 .text-orange { color: var(--color-orange); }
 .text-yellow { color: var(--color-yellow); }
 .bg-orange { background: var(--color-orange); }
+
+/* 21st.dev RetroGrid — animated perspective grid (themed orange) */
+@keyframes grid-scroll {
+  0% { transform: translateY(-50%); }
+  100% { transform: translateY(0); }
+}
+.animate-grid {
+  animation: grid-scroll 22s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-grid { animation: none; }
+}
