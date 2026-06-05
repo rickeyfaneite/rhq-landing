@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
+import { Logo } from "@/components/logo";
 
 const navLinks = [
   { label: "Services", href: "#services" },
@@ -17,13 +17,7 @@ export function Nav() {
     <header className="fixed top-0 z-50 w-full border-b border-border/50 bg-background/80 backdrop-blur-md">
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
         <a href="#" className="flex items-center gap-2">
-          <Image
-            src="/assets/logo-concept.png"
-            alt="The AI Builder logo"
-            width={32}
-            height={32}
-            className="rounded-sm"
-          />
+          <Logo className="size-8" />
           <span className="font-heading text-lg font-semibold text-foreground">
             The AI Builder
           </span>

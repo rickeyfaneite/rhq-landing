@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { Logo } from "@/components/logo";
 
 const footerLinks = [
   { label: "Services", href: "#services" },
@@ -13,13 +13,7 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-6">
         <div className="flex flex-col items-center gap-8 md:flex-row md:justify-between">
           <div className="flex items-center gap-3">
-            <Image
-              src="/assets/logo-concept.png"
-              alt="The AI Builder logo"
-              width={24}
-              height={24}
-              className="rounded-sm"
-            />
+            <Logo className="size-8" />
             <span className="font-heading text-sm font-medium text-foreground">
               The AI Builder
             </span>
