@@ -15,7 +15,7 @@ const projects = [
     status: "Prototype",
     statusColor: "var(--color-yellow)",
     blurb: "AI wardrobe app that organizes and recommends outfits from your own closet.",
-    img: "/assets/tenue-mockup.png",
+    img: "/assets/tenue-warm.png",
     href: undefined,
   },
   {
@@ -23,7 +23,7 @@ const projects = [
     status: "MVP",
     statusColor: "var(--color-muted)",
     blurb: "Immigration-law automation for document-heavy case workflows.",
-    img: "/assets/legalease-mockup.png",
+    img: "/assets/legalease-warm.png",
     href: undefined,
   },
 ];
