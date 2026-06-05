@@ -12,11 +12,8 @@ export function Footer() {
     <footer className="relative z-10" style={{ borderTop: "1px solid var(--color-line)" }}>
       <div className="mx-auto max-w-[1280px] px-6 sm:px-10 py-12" style={{ borderInline: "1px solid var(--color-line)" }}>
         <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
-          <a href="#top" className="flex items-center gap-2.5">
-            <Logo size={38} />
-            <span className="text-[15px] font-semibold tracking-tight" style={{ fontFamily: "var(--font-heading)" }}>
-              RicardoHQ
-            </span>
+          <a href="#top" className="flex items-center" aria-label="RHQ home">
+            <Logo size={40} />
           </a>
           <nav className="flex flex-wrap gap-7">
             {links.map((l) => (
@@ -29,7 +26,7 @@ export function Footer() {
         </div>
         <div className="flex flex-col gap-2 pt-10 sm:flex-row sm:items-center sm:justify-between">
           <span className="label">Built solo in Miami · One founder. No VC. All AI.</span>
-          <span className="label">© 2026 RicardoHQ</span>
+          <span className="label">© 2026 RHQ</span>
         </div>
       </div>
     </footer>

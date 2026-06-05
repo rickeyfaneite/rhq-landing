@@ -17,7 +17,7 @@ export function Hero() {
           className="flex items-center justify-between py-4"
           style={{ borderBottom: "1px solid var(--color-line)" }}
         >
-          <span className="label"><span className="text-orange">/</span> RICARDOHQ</span>
+          <span className="label"><span className="text-orange">/</span> RHQ</span>
           <span className="label hidden sm:block">MIAMI · EST. 2026</span>
         </div>
 
