@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<!--
+  The RHQ Brief — welcome / base email template (light, on-brand).
+  Paste into beehiiv: Settings > Email > Welcome Email (Custom HTML), or use as
+  the base look for issues. beehiiv automatically appends the required
+  unsubscribe + postal-address compliance footer, but a manual {{unsubscribe}}
+  link is included below as well.
+
+  Design tokens (match ricardohq.com):
+    orange       #d2562f   orange-deep #b8431f   amber #f5c451
+    paper        #f4f1ee   ink         #0a0a0a   muted #6b655f
+  Heading font: Space Grotesk (web), fallback Helvetica Neue / Arial.
+  Logo: dark rounded /RHQ tile, reads well on the light paper background.
+-->
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="x-apple-disable-message-reformatting">
+  <title>The RHQ Brief</title>
+  <!--[if mso]>
+  <noscript><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript>
+  <![endif]-->
+  <!-- Space Grotesk for clients that honor web fonts (Apple Mail, iOS, some others); everything else falls back gracefully. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap');
+    /* Reset */
+    body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    img { -ms-interpolation-mode: bicubic; border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
+    body { margin: 0 !important; padding: 0 !important; width: 100% !important; }
+    a { color: #b8431f; }
+    .heading { font-family: 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif; }
+    @media only screen and (max-width: 600px) {
+      .container { width: 100% !important; }
+      .px { padding-left: 24px !important; padding-right: 24px !important; }
+      .h1 { font-size: 30px !important; line-height: 36px !important; }
+    }
+  </style>
+</head>
+<body style="margin:0; padding:0; background-color:#f4f1ee;">
+  <!-- Preheader (hidden) -->
+  <div style="display:none; max-height:0; overflow:hidden; mso-hide:all; font-size:1px; line-height:1px; color:#f4f1ee; opacity:0;">
+    Technology and finance, decoded. One issue a week, free.
+  </div>
+
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f4f1ee;">
+    <tr>
+      <td align="center" style="padding:32px 16px;">
+
+        <!-- Card -->
+        <table role="presentation" class="container" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px; max-width:600px; background-color:#ffffff; border:1px solid #e7e2dc; border-radius:14px; overflow:hidden;">
+
+          <!-- Header: logo + brand -->
+          <tr>
+            <td class="px" align="left" style="padding:32px 40px 0 40px;">
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="vertical-align:middle;">
+                    <img src="https://ricardohq.com/assets/rhq-logo.png" width="48" height="48" alt="RHQ" style="display:block; width:48px; height:48px; border-radius:11px;">
+                  </td>
+                  <td style="vertical-align:middle; padding-left:14px;">
+                    <span class="heading" style="font-family:'Space Grotesk','Helvetica Neue',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:#d2562f;">The RHQ Brief</span>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Accent rule -->
+          <tr>
+            <td class="px" style="padding:24px 40px 0 40px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr><td style="height:3px; width:44px; background-color:#d2562f; font-size:0; line-height:0;">&nbsp;</td></tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Headline -->
+          <tr>
+            <td class="px" align="left" style="padding:20px 40px 0 40px;">
+              <h1 class="heading h1" style="margin:0; font-family:'Space Grotesk','Helvetica Neue',Arial,sans-serif; font-size:38px; line-height:42px; font-weight:700; color:#0a0a0a; letter-spacing:-0.02em;">
+                Technology and finance, decoded.
+              </h1>
+            </td>
+          </tr>
+
+          <!-- Body copy -->
+          <tr>
+            <td class="px" align="left" style="padding:22px 40px 0 40px;">
+              <p style="margin:0 0 16px 0; font-family:'Helvetica Neue',Arial,sans-serif; font-size:16px; line-height:26px; color:#33302c;">
+                You&rsquo;re in. Welcome to <strong style="color:#0a0a0a;">The RHQ Brief</strong>.
+              </p>
+              <p style="margin:0 0 16px 0; font-family:'Helvetica Neue',Arial,sans-serif; font-size:16px; line-height:26px; color:#33302c;">
+                Once a week I send one clear read on where technology meets money &mdash; the tools, the markets, and the moves worth understanding, broken down without the noise. No hype, no filler, free.
+              </p>
+              <p style="margin:0; font-family:'Helvetica Neue',Arial,sans-serif; font-size:16px; line-height:26px; color:#33302c;">
+                First issue lands soon. Until then, you can see what I&rsquo;m building at the link below.
+              </p>
+            </td>
+          </tr>
+
+          <!-- Button -->
+          <tr>
+            <td class="px" align="left" style="padding:28px 40px 4px 40px;">
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td align="center" bgcolor="#d2562f" style="border-radius:999px;">
+                    <!--[if mso]>&nbsp;<![endif]-->
+                    <a href="https://ricardohq.com" target="_blank" style="display:inline-block; font-family:'Space Grotesk','Helvetica Neue',Arial,sans-serif; font-size:15px; font-weight:700; color:#0a0a0a; text-decoration:none; padding:13px 28px; border-radius:999px;">
+                      Visit ricardohq.com &rarr;
+                    </a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Divider -->
+          <tr>
+            <td class="px" style="padding:32px 40px 0 40px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr><td style="border-top:1px solid #e7e2dc; font-size:0; line-height:0;">&nbsp;</td></tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td class="px" align="left" style="padding:20px 40px 36px 40px;">
+              <p style="margin:0 0 8px 0; font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; line-height:20px; color:#8a847d;">
+                Ricardo Faneite &middot; RHQ &mdash; one founder, no VC, all AI.
+              </p>
+              <p style="margin:0; font-family:'Helvetica Neue',Arial,sans-serif; font-size:13px; line-height:20px; color:#8a847d;">
+                You&rsquo;re receiving this because you subscribed at ricardohq.com.
+                <a href="{{unsubscribe}}" style="color:#8a847d; text-decoration:underline;">Unsubscribe</a>.
+              </p>
+            </td>
+          </tr>
+
+        </table>
+        <!-- /Card -->
+
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
