@@ -17,7 +17,7 @@ export function Footer() {
           </a>
           <nav className="flex flex-wrap gap-7">
             {links.map((l) => (
-              <a key={l.href} href={l.href} className="label hover:text-[color:var(--color-foreground)] transition-colors">
+              <a key={l.href} href={l.href} className="label inline-flex min-h-11 items-center hover:text-[color:var(--color-foreground)] transition-colors">
                 {l.label}
               </a>
             ))}

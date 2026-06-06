@@ -60,7 +60,7 @@ export function Projects() {
                   alt={`${p.name}: ${p.blurb}`}
                   fill
                   sizes="(min-width: 768px) 50vw, 100vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                  className="object-cover transition-transform duration-300 group-hover:scale-[1.03] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
                 />
               </div>
               <div className="flex flex-1 flex-col px-6 sm:px-8 py-7">
@@ -70,7 +70,7 @@ export function Projects() {
                     {p.status}
                   </span>
                 </div>
-                <p className="text-[15px] leading-relaxed text-[color:var(--color-muted)] pt-2 flex-1">
+                <p className="text-base leading-relaxed text-[color:var(--color-muted)] pt-2 flex-1">
                   {p.blurb}
                 </p>
                 {p.href && (
@@ -78,7 +78,7 @@ export function Projects() {
                     href={p.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="label inline-flex items-center gap-1 pt-5 hover:text-orange transition-colors"
+                    className="label mt-4 inline-flex min-h-11 items-center gap-1 hover:text-orange transition-colors"
                   >
                     Visit <ArrowUpRight size={14} />
                   </a>

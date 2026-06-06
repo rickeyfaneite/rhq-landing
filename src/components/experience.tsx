@@ -16,11 +16,11 @@ export function Experience() {
         <div className="grid grid-cols-1 md:grid-cols-2">
           <Reveal className="px-6 sm:px-10 py-20" style={{ borderRight: "1px solid var(--color-line)" }}>
             <span className="label">Background</span>
-            <p className="display text-[clamp(1.7rem,3.6vw,2.6rem)] pt-5 leading-tight">
+            <h2 className="display text-[clamp(1.7rem,3.6vw,2.6rem)] pt-5 leading-tight">
               10+ years moving enterprise systems from architecture to{" "}
               <span className="text-orange">production</span>.
-            </p>
-            <p className="text-[15px] leading-relaxed text-[color:var(--color-muted)] pt-6 max-w-md">
+            </h2>
+            <p className="text-base leading-relaxed text-[color:var(--color-muted)] pt-6 max-w-md">
               Pre-sales and solutions engineering across MSP and cybersecurity, with roots in
               network engineering and clinical IT. Bilingual EN/ES. I run a bare-metal homelab
               and orchestrate my own AI agents end to end.

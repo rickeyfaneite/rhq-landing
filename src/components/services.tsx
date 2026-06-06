@@ -42,11 +42,8 @@ export function Services() {
               <Reveal
                 key={s.title}
                 delay={(i % 2) * 80}
-                className="group px-6 sm:px-10 py-10"
-                style={{
-                  borderBottom: "1px solid var(--color-line)",
-                  borderRight: i % 2 === 0 ? "1px solid var(--color-line)" : "none",
-                }}
+                className={`group px-6 sm:px-10 py-10 ${i % 2 === 0 ? "md:[border-right:1px_solid_var(--color-line)]" : ""}`}
+                style={{ borderBottom: "1px solid var(--color-line)" }}
               >
                 <div className="flex items-center justify-between">
                   <span
@@ -63,7 +60,7 @@ export function Services() {
                   </span>
                 </div>
                 <h3 className="text-xl font-medium tracking-tight pt-6">{s.title}</h3>
-                <p className="text-[15px] leading-relaxed text-[color:var(--color-muted)] pt-2 max-w-md">
+                <p className="text-base leading-relaxed text-[color:var(--color-muted)] pt-2 max-w-md">
                   {s.desc}
                 </p>
               </Reveal>
