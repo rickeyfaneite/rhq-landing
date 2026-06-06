@@ -9,15 +9,19 @@ const stats = [
   { k: "Bare metal", v: "Self-hosted lab" },
 ];
 
-// 21st.dev RetroGrid — animated perspective grid, themed warm orange.
-function RetroGrid() {
+// Static grid accent — subtle fixed orange grid, masked toward the warm side.
+function StaticGrid() {
   return (
-    <div className="pointer-events-none absolute inset-0 z-[1] overflow-hidden opacity-40 [perspective:200px]">
-      <div className="absolute inset-0 [transform:rotateX(60deg)]">
-        <div className="animate-grid [background-image:linear-gradient(to_right,rgba(210,86,47,0.45)_1px,transparent_0),linear-gradient(to_bottom,rgba(210,86,47,0.45)_1px,transparent_0)] [background-repeat:repeat] [background-size:46px_46px] [height:300vh] [inset:0%_0px] [margin-left:-200%] [transform-origin:100%_0_0] [width:600vw]" />
-      </div>
-      <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-background)] to-transparent to-80%" />
-    </div>
+    <div
+      className="pointer-events-none absolute inset-0 z-[1]"
+      style={{
+        backgroundImage:
+          "linear-gradient(to right, rgba(210,86,47,0.13) 1px, transparent 1px), linear-gradient(to bottom, rgba(210,86,47,0.13) 1px, transparent 1px)",
+        backgroundSize: "54px 54px",
+        WebkitMaskImage: "radial-gradient(ellipse 78% 62% at 72% 8%, #000 18%, transparent 72%)",
+        maskImage: "radial-gradient(ellipse 78% 62% at 72% 8%, #000 18%, transparent 72%)",
+      }}
+    />
   );
 }
 
@@ -52,7 +56,7 @@ export function Hero() {
         />
       </div>
 
-      <RetroGrid />
+      <StaticGrid />
 
       {/* warm radial accent */}
       <div
