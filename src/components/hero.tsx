@@ -9,36 +9,20 @@ const stats = [
   { k: "Bare metal", v: "Self-hosted lab" },
 ];
 
-// Static grid accent — subtle fixed orange grid, masked toward the warm side.
-function StaticGrid() {
-  return (
-    <div
-      className="pointer-events-none absolute inset-0 z-[1]"
-      style={{
-        backgroundImage:
-          "linear-gradient(to right, rgba(210,86,47,0.13) 1px, transparent 1px), linear-gradient(to bottom, rgba(210,86,47,0.13) 1px, transparent 1px)",
-        backgroundSize: "54px 54px",
-        WebkitMaskImage: "radial-gradient(ellipse 78% 62% at 72% 8%, #000 18%, transparent 72%)",
-        maskImage: "radial-gradient(ellipse 78% 62% at 72% 8%, #000 18%, transparent 72%)",
-      }}
-    />
-  );
-}
-
 export function Hero() {
   return (
     <section id="top" className="relative z-10 isolate overflow-hidden">
       {/* background image + scrim */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/assets/hero-orange.png"
+          src="/assets/bg3-abstract.png"
           alt=""
           aria-hidden
           fill
           sizes="100vw"
           priority
-          className="object-cover opacity-55"
-          style={{ objectPosition: "center 42%" }}
+          className="object-cover opacity-60"
+          style={{ objectPosition: "center" }}
         />
         <div
           className="absolute inset-0"
@@ -55,8 +39,6 @@ export function Hero() {
           }}
         />
       </div>
-
-      <StaticGrid />
 
       {/* warm radial accent */}
       <div
