@@ -39,13 +39,14 @@ export async function POST(request: Request) {
           utm_source: "ricardohq.com",
           referring_site: "ricardohq.com",
         }),
+        signal: AbortSignal.timeout(10000),
       }
     );
 
     if (!response.ok) {
-      const body = await response.text();
+      // Log status only — the response body can echo the submitted email.
       console.error(
-        `Newsletter API: beehiiv returned ${response.status}: ${body}`
+        `Newsletter API: beehiiv returned ${response.status} ${response.statusText}`
       );
       return NextResponse.json(
         { error: "Subscription failed" },
