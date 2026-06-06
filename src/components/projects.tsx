@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 
@@ -45,13 +46,13 @@ export function Projects() {
               className="group flex flex-col"
               style={{ borderRight: i < projects.length - 1 ? "1px solid var(--color-line)" : "none", borderBottom: "1px solid var(--color-line)" }}
             >
-              <div className="overflow-hidden" style={{ borderBottom: "1px solid var(--color-line)" }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+              <div className="relative aspect-[16/10] overflow-hidden" style={{ borderBottom: "1px solid var(--color-line)" }}>
+                <Image
                   src={p.img}
-                  alt={`${p.name} — ${p.blurb}`}
-                  className="w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                  style={{ aspectRatio: "16 / 10" }}
+                  alt={`${p.name}: ${p.blurb}`}
+                  fill
+                  sizes="(min-width: 768px) 33vw, 100vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                 />
               </div>
               <div className="flex flex-1 flex-col px-6 sm:px-8 py-7">

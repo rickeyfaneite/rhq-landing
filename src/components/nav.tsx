@@ -33,7 +33,7 @@ export function Nav() {
         <button
           type="button"
           onClick={() => setOpen(!open)}
-          className="md:hidden text-[color:var(--color-muted)]"
+          className="-mr-2 flex size-11 items-center justify-center text-[color:var(--color-muted)] md:hidden"
           aria-label="Toggle menu"
           aria-expanded={open}
         >

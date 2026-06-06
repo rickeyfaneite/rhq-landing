@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 
@@ -25,12 +26,14 @@ export function Hero() {
     <section id="top" className="relative z-10 isolate overflow-hidden">
       {/* background image + scrim */}
       <div className="absolute inset-0 z-0">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <Image
           src="/assets/hero-orange.png"
           alt=""
-          aria-hidden="true"
-          className="h-full w-full object-cover opacity-55"
+          aria-hidden
+          fill
+          sizes="100vw"
+          priority
+          className="object-cover opacity-55"
           style={{ objectPosition: "center 42%" }}
         />
         <div

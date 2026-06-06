@@ -5,20 +5,23 @@ import { useState } from "react";
 export function Newsletter() {
   const [email, setEmail] = useState("");
   const [done, setDone] = useState(false);
+  const [error, setError] = useState(false);
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
     if (!email) return;
+    setError(false);
     try {
-      await fetch("/api/newsletter", {
+      const res = await fetch("/api/newsletter", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
       });
+      if (!res.ok) throw new Error("request failed");
+      setDone(true);
     } catch {
-      // placeholder endpoint
+      setError(true);
     }
-    setDone(true);
   }
 
   return (
@@ -36,21 +39,28 @@ export function Newsletter() {
         {done ? (
           <p className="text-lg font-medium pt-8">You&apos;re in. Talk soon.</p>
         ) : (
-          <form onSubmit={submit} className="flex flex-wrap gap-3 pt-8 max-w-lg">
-            <input
-              type="email"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="you@email.com"
-              aria-label="Email address"
-              className="flex-1 min-w-[220px] rounded-full px-5 py-3 text-[15px] outline-none"
-              style={{ background: "rgba(10,10,10,0.08)", border: "1px solid rgba(10,10,10,0.25)", color: "#0a0a0a" }}
-            />
-            <button type="submit" className="btn rounded-full px-6 py-3 font-medium" style={{ background: "#0a0a0a", color: "#fff" }}>
-              Subscribe
-            </button>
-          </form>
+          <div className="max-w-lg">
+            <form onSubmit={submit} className="flex flex-wrap gap-3 pt-8">
+              <input
+                type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="you@email.com"
+                aria-label="Email address"
+                className="flex-1 min-w-[220px] rounded-full px-5 py-3 text-[15px] outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0a0a0a]"
+                style={{ background: "rgba(10,10,10,0.08)", border: "1px solid rgba(10,10,10,0.25)", color: "#0a0a0a" }}
+              />
+              <button type="submit" className="btn rounded-full px-6 py-3 font-medium focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0a0a0a]" style={{ background: "#0a0a0a", color: "#fff" }}>
+                Subscribe
+              </button>
+            </form>
+            {error && (
+              <p className="pt-3 text-sm" style={{ color: "#0a0a0a" }} role="alert">
+                Something went wrong. Please try again.
+              </p>
+            )}
+          </div>
         )}
       </div>
     </section>

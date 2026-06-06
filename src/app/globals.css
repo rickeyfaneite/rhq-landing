@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
-/* ===== Orbit • Lunar Pulse — RicardoHQ ===== */
-/* Dark editorial. Orange #FF4500 primary, yellow #FFF80A secondary, Inter, */
-/* full-bleed strong grid, glassy near-black surfaces, sharp corners.       */
+/* ===== Orbit • Lunar Pulse — RHQ ===== */
+/* Dark editorial. Warm orange #d2562f primary, amber #f5c451 secondary,    */
+/* Manrope display + Inter body, full-bleed bordered grid, sharp corners.   */
 
 @theme inline {
   --font-sans: var(--font-inter);
@@ -22,8 +22,24 @@
   --color-yellow: #f5c451;
 }
 
-html {
-  scroll-behavior: smooth;
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* keep anchored sections clear of the fixed nav */
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
+/* visible keyboard focus on all interactive elements */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+.btn:focus-visible {
+  outline: 2px solid var(--color-orange);
+  outline-offset: 3px;
 }
 
 body {
@@ -118,6 +134,13 @@ h1, h2, h3, h4 {
 .reveal.in {
   opacity: 1;
   transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 .text-orange { color: var(--color-orange); }
