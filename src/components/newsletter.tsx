@@ -27,13 +27,13 @@ export function Newsletter() {
   return (
     <section id="newsletter" className="relative z-10 bg-orange text-[#0a0a0a]" style={{ borderTop: "1px solid var(--color-line)" }}>
       <div className="mx-auto max-w-[1280px] px-6 sm:px-10 py-20">
-        <span className="label" style={{ color: "#0a0a0a" }}>The AI Builder newsletter</span>
+        <span className="label" style={{ color: "#0a0a0a" }}>The RHQ Brief</span>
         <h2 className="display text-[clamp(2.2rem,6vw,4.2rem)] pt-4 max-w-3xl">
-          Notes from the build.
+          Technology and finance, decoded.
         </h2>
         <p className="text-[16px] leading-relaxed pt-5 max-w-xl" style={{ color: "#0a0a0a" }}>
-          Short notes on shipping AI products solo. The engineering calls, the deployment
-          lessons, and what actually worked. One issue a week, no hype.
+          Where technology meets money. The tools, the markets, and the moves worth
+          understanding, broken down without the noise. One issue a week, free.
         </p>
 
         {done ? (
