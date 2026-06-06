@@ -66,25 +66,23 @@ export function Hero() {
             className="label inline-flex w-fit items-center gap-2 rounded-full border px-4 py-1.5"
             style={{ borderColor: "var(--color-line-strong)", background: "rgba(20,18,15,0.5)", backdropFilter: "blur(8px)" }}
           >
-            <span className="text-orange">/</span> RHQ · THE AI BUILDER
+            <span className="text-orange">/</span> ONE FOUNDER · NO VC · ALL AI
           </span>
         </Reveal>
 
         <Reveal delay={90}>
-          <h1 className="display text-[clamp(2.9rem,9vw,7rem)] pt-7">
-            One founder.
+          <h1 className="display text-[clamp(2.6rem,8vw,6rem)] pt-7">
+            Your AI product,
             <br />
-            No VC.
-            <br />
-            <span className="text-orange">All AI.</span>
+            built and <span className="text-orange">shipped.</span>
           </h1>
         </Reveal>
 
         <Reveal delay={170} className="max-w-2xl pt-8">
           <p className="text-[17px] leading-relaxed text-[color:var(--color-muted)]">
-            I build small, fast, focused software products. Solo, in Miami, powered by
-            custom-orchestrated AI agents on bare-metal hardware. No board meetings, no
-            vendor bloat. Just direct code and clean tools that solve real problems.
+            I&apos;m Ricardo, a senior engineer running a one-person studio in Miami. Bring me an
+            idea and I take it from spec to a live app that real users pay for, in weeks. No
+            agency layers, no hand-offs, no vendor runaround.
           </p>
         </Reveal>
 
