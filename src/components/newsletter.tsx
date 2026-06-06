@@ -29,7 +29,7 @@ export function Newsletter() {
       <div className="mx-auto max-w-[1280px] px-6 sm:px-10 py-20">
         <span className="label" style={{ color: "rgba(10,10,10,0.7)" }}>The AI Builder newsletter</span>
         <h2 className="display text-[clamp(2.2rem,6vw,4.2rem)] pt-4 max-w-3xl">
-          Watch me build, in public.
+          Notes from the build.
         </h2>
         <p className="text-[16px] leading-relaxed pt-5 max-w-xl" style={{ color: "rgba(10,10,10,0.78)" }}>
           Short notes on shipping AI products solo. The engineering calls, the deployment
