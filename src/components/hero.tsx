@@ -15,13 +15,13 @@ export function Hero() {
       {/* background image + scrim */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/assets/bg3-abstract.png"
+          src="/assets/newbg3-topo.png"
           alt=""
           aria-hidden
           fill
           sizes="100vw"
           priority
-          className="object-cover opacity-60"
+          className="object-cover opacity-70"
           style={{ objectPosition: "center" }}
         />
         <div

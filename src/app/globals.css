@@ -6,7 +6,7 @@
 
 @theme inline {
   --font-sans: var(--font-inter);
-  --font-heading: var(--font-manrope);
+  --font-heading: var(--font-display);
 
   --color-background: #0b0a09;
   --color-foreground: #f4f1ee;

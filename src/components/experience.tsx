@@ -1,12 +1,12 @@
 import { Reveal } from "@/components/reveal";
 
-const certs = [
-  "AWS Cloud Practitioner",
-  "Microsoft Azure AZ-900",
-  "Cisco CCNA",
-  "Cisco CCNP",
-  "CWNA",
-  "Fortinet NSE",
+const stack = [
+  "Next.js + Vercel",
+  "Supabase + Postgres",
+  "Cloudflare",
+  "Proxmox + Docker",
+  "Self-hosted AI agents",
+  "TypeScript + Python",
 ];
 
 export function Experience() {
@@ -28,17 +28,17 @@ export function Experience() {
           </Reveal>
 
           <div className="grid grid-cols-2">
-            {certs.map((c, i) => (
+            {stack.map((c, i) => (
               <Reveal
                 key={c}
                 delay={(i % 2) * 70}
                 className="flex items-center px-6 sm:px-8 py-8"
                 style={{
-                  borderBottom: i < certs.length - 2 ? "1px solid var(--color-line)" : "none",
+                  borderBottom: i < stack.length - 2 ? "1px solid var(--color-line)" : "none",
                   borderRight: i % 2 === 0 ? "1px solid var(--color-line)" : "none",
                 }}
               >
-                <span className="text-[15px] font-medium tracking-tight">
+                <span className="text-base font-medium tracking-tight">
                   <span className="text-orange">/</span> {c}
                 </span>
               </Reveal>
