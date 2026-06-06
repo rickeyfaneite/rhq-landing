@@ -27,6 +27,14 @@ const projects = [
     img: "/assets/legalease-warm.png",
     href: undefined,
   },
+  {
+    name: "Planofy",
+    status: "Live",
+    statusColor: "var(--color-orange)",
+    blurb: "AI estimating for residential contractors: reads plan packages and prices the bid. Built under Nightcity.",
+    img: "/assets/planofy.png",
+    href: "https://planofy.app",
+  },
 ];
 
 export function Projects() {
@@ -38,20 +46,20 @@ export function Projects() {
           <h2 className="display text-[clamp(2rem,5vw,3.4rem)] pt-4">Real products, in the wild.</h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3" style={{ borderTop: "1px solid var(--color-line)" }}>
+        <div className="grid grid-cols-1 md:grid-cols-2" style={{ borderTop: "1px solid var(--color-line)" }}>
           {projects.map((p, i) => (
             <Reveal
               key={p.name}
-              delay={i * 90}
-              className="group flex flex-col"
-              style={{ borderRight: i < projects.length - 1 ? "1px solid var(--color-line)" : "none", borderBottom: "1px solid var(--color-line)" }}
+              delay={(i % 2) * 90}
+              className={`group flex flex-col ${i % 2 === 0 ? "md:[border-right:1px_solid_var(--color-line)]" : ""}`}
+              style={{ borderBottom: "1px solid var(--color-line)" }}
             >
               <div className="relative aspect-[16/10] overflow-hidden" style={{ borderBottom: "1px solid var(--color-line)" }}>
                 <Image
                   src={p.img}
                   alt={`${p.name}: ${p.blurb}`}
                   fill
-                  sizes="(min-width: 768px) 33vw, 100vw"
+                  sizes="(min-width: 768px) 50vw, 100vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                 />
               </div>
