@@ -47,3 +47,5 @@ src/
 ```bash
 npx shadcn@latest add <component-name>
 ```
+
+<!-- dry run: testing GitHub -> Vercel preview flow, safe to delete -->
