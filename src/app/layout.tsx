@@ -1,63 +1,62 @@
-import type { Metadata } from "next";
-import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Geist, Geist_Mono, Newsreader } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const geist = Geist({
+  variable: "--font-geist",
   subsets: ["latin"],
   display: "swap",
 });
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-display",
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
   display: "swap",
 });
 
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-mono",
+const newsreader = Newsreader({
+  variable: "--font-newsreader",
   subsets: ["latin"],
-  weight: ["500", "700", "800"],
+  style: ["normal", "italic"],
+  weight: ["400"],
   display: "swap",
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ricardohq.com"),
-  title: "RHQ — One founder. No VC. All AI.",
+  title: "Ricardo HQ — Builds AI products that ship.",
   description:
-    "RHQ builds small, fast, focused software products. Solo, in Miami, powered by custom-orchestrated agents on bare-metal hardware.",
+    "Ricardo builds AI agents, creative tools, and product experiments. Working fast, keeping the craft.",
   openGraph: {
-    title: "RHQ — One founder. No VC. All AI.",
+    title: "Ricardo HQ — Builds AI products that ship.",
     description:
-      "Small, fast, focused software products. Solo, in Miami, powered by custom AI agents.",
+      "AI agents, creative tools, and product experiments from Ricardo HQ.",
     url: "https://ricardohq.com",
-    siteName: "RHQ",
+    siteName: "Ricardo HQ",
     type: "website",
   },
   twitter: {
-    card: "summary_large_image",
-    title: "RHQ — One founder. No VC. All AI.",
+    card: "summary",
+    title: "Ricardo HQ — Builds AI products that ship.",
     description:
-      "Small, fast, focused software products. Solo, in Miami, powered by custom AI agents.",
+      "AI agents, creative tools, and product experiments from Ricardo HQ.",
   },
-  icons: {
-    icon: "/assets/rhq-logo.png",
-    apple: "/assets/rhq-icon-180.png",
-  },
+};
+
+export const viewport: Viewport = {
+  colorScheme: "dark",
+  themeColor: "#0a0a0a",
 };
 
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} h-full antialiased`}>
-      <body className="min-h-full">
-        <noscript>
-          <style>{`.reveal{opacity:1 !important;transform:none !important}`}</style>
-        </noscript>
-        {children}
-      </body>
+    <html
+      lang="en"
+      className={`${geist.variable} ${geistMono.variable} ${newsreader.variable} h-full antialiased`}
+    >
+      <body className="min-h-full">{children}</body>
     </html>
   );
 }
