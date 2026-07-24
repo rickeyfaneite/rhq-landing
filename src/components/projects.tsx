@@ -5,11 +5,35 @@ import { Reveal } from "@/components/reveal";
 const projects = [
   {
     name: "Settled",
-    status: "Live",
+    status: "Live · iOS + Web",
     statusColor: "var(--color-orange)",
-    blurb: "Digital contracts and booking for freelance pros. Live and taking real payments.",
+    blurb: "Contract signing and booking for freelance pros. Live on the App Store and the web, taking real payments on both.",
     img: "/assets/settled-hero.png",
     href: "https://settledapp.work",
+  },
+  {
+    name: "The RHQ Fleet",
+    status: "12 agents",
+    statusColor: "var(--color-orange)",
+    blurb: "Twelve specialized AI agents that plan, design, build, and QA RHQ's products end to end. How one founder ships like a full team.",
+    img: "/assets/fleet-hero.png",
+    href: undefined,
+  },
+  {
+    name: "Bookalo",
+    status: "Building",
+    statusColor: "var(--color-yellow)",
+    blurb: "Booking software for any profession, fully bilingual in English and Spanish. Scheduling, CRM, and checkout in one clean flow.",
+    img: "/assets/bookalo-real.png",
+    href: "https://getbookalo.com",
+  },
+  {
+    name: "Traced",
+    status: "In development",
+    statusColor: "var(--color-yellow)",
+    blurb: "A job-hunt copilot. Forward your alerts, get a scored shortlist and ATS-clean resumes that never invent a line.",
+    img: "/assets/traced-real.png",
+    href: "https://usetraced.vercel.app",
   },
   {
     name: "Tenue",
@@ -26,14 +50,6 @@ const projects = [
     blurb: "Immigration-law automation for document-heavy case workflows.",
     img: "/assets/legalease-warm.png",
     href: undefined,
-  },
-  {
-    name: "Planofy",
-    status: "Live",
-    statusColor: "var(--color-orange)",
-    blurb: "AI estimating for residential contractors: reads plan packages and prices the bid. Built under Nightcity.",
-    img: "/assets/planofy.png",
-    href: "https://planofy.app",
   },
 ];
 

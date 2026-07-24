@@ -4,7 +4,6 @@ const links = [
   { href: "#work", label: "What I build" },
   { href: "#projects", label: "Projects" },
   { href: "#background", label: "Background" },
-  { href: "#newsletter", label: "Newsletter" },
 ];
 
 export function Footer() {

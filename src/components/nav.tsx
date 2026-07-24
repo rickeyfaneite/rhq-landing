@@ -8,7 +8,6 @@ const links = [
   { href: "#work", label: "What I build" },
   { href: "#projects", label: "Projects" },
   { href: "#background", label: "Background" },
-  { href: "#newsletter", label: "Newsletter" },
 ];
 
 export function Nav() {
@@ -27,7 +26,7 @@ export function Nav() {
               {l.label}
             </a>
           ))}
-          <a href="#newsletter" className="btn btn-primary">Work with me</a>
+          <a href="mailto:hello@ricardohq.com" className="btn btn-primary">Work with me</a>
         </nav>
 
         <button
@@ -49,7 +48,7 @@ export function Nav() {
                 {l.label}
               </a>
             ))}
-            <a href="#newsletter" onClick={() => setOpen(false)} className="btn btn-primary mt-3 justify-center">
+            <a href="mailto:hello@ricardohq.com" onClick={() => setOpen(false)} className="btn btn-primary mt-3 justify-center">
               Work with me
             </a>
           </div>

@@ -4,7 +4,7 @@ import { Reveal } from "@/components/reveal";
 
 const stats = [
   { k: "10+ yrs", v: "Enterprise eng" },
-  { k: "3 live", v: "Products shipped" },
+  { k: "5 apps", v: "Designed & built" },
   { k: "EN / ES", v: "Bilingual" },
   { k: "Bare metal", v: "Self-hosted lab" },
 ];
@@ -76,7 +76,7 @@ export function Hero() {
         </Reveal>
 
         <Reveal delay={250} className="flex flex-wrap gap-3 pt-9">
-          <a href="#newsletter" className="btn btn-primary">
+          <a href="mailto:hello@ricardohq.com" className="btn btn-primary">
             Work with me <ArrowUpRight size={16} />
           </a>
           <a href="#projects" className="btn btn-ghost">See what I&apos;ve shipped</a>
