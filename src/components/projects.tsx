@@ -15,8 +15,8 @@ const projects = [
     name: "The RHQ Fleet",
     status: "12 agents",
     statusColor: "var(--color-orange)",
-    blurb: "Twelve specialized AI agents that plan, design, build, and QA RHQ's products end to end. How one founder ships like a full team.",
-    img: "/assets/fleet-hero.png",
+    blurb: "Twelve specialized AI agents with named roles: engineer, designer, QA, research, red team. They plan, build, and review RHQ's products end to end.",
+    img: "/assets/fleet-real.png",
     href: undefined,
   },
   {
@@ -36,19 +36,43 @@ const projects = [
     href: "https://usetraced.vercel.app",
   },
   {
+    name: "Planofy",
+    status: "Live · Nightcity",
+    statusColor: "var(--color-orange)",
+    blurb: "AI estimating for residential contractors: reads the plan package and prices the bid. Built with a co-founder under Nightcity Innovations.",
+    img: "/assets/planofy-real.png",
+    href: "https://planofy.app",
+  },
+  {
+    name: "MACA",
+    status: "Live · Client build",
+    statusColor: "var(--color-orange)",
+    blurb: "Bilingual site and booking system for a Miami makeup artist. Design, infrastructure, and a Square-backed gift card and payments flow.",
+    img: "/assets/maca-real.png",
+    href: "https://www.macasoto.com",
+  },
+  {
+    name: "Auto Service Ally",
+    status: "Live · Client build",
+    statusColor: "var(--color-orange)",
+    blurb: "Spanish-first landing and CRM for an auto-repair consultant who reviews dealership estimates line by line.",
+    img: "/assets/serviceally-real.png",
+    href: "https://auto-service-ally.vercel.app",
+  },
+  {
     name: "Tenue",
     status: "Prototype",
     statusColor: "var(--color-yellow)",
     blurb: "AI wardrobe app that organizes and recommends outfits from your own closet.",
-    img: "/assets/tenue-warm.png",
-    href: undefined,
+    img: "/assets/tenue-real.png",
+    href: "https://tenueapp.com",
   },
   {
     name: "LegalEase",
-    status: "MVP",
+    status: "Private beta",
     statusColor: "var(--color-muted)",
-    blurb: "Immigration-law automation for document-heavy case workflows.",
-    img: "/assets/legalease-warm.png",
+    blurb: "Client intake for immigration attorneys. Takes the interview in Spanish, Mandarin, or Portuguese, hands back a structured summary in English.",
+    img: "/assets/legalease-real.png",
     href: undefined,
   },
 ];
@@ -63,19 +87,22 @@ export function Projects() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2" style={{ borderTop: "1px solid var(--color-line)" }}>
-          {projects.map((p, i) => (
+          {projects.map((p, i) => {
+            // ponytail: odd card count would leave a dead half-row, so the last one goes full width.
+            const wide = i === projects.length - 1 && projects.length % 2 === 1;
+            return (
             <Reveal
               key={p.name}
               delay={(i % 2) * 90}
-              className={`group flex flex-col ${i % 2 === 0 ? "md:[border-right:1px_solid_var(--color-line)]" : ""}`}
+              className={`group flex flex-col ${wide ? "md:col-span-2" : i % 2 === 0 ? "md:[border-right:1px_solid_var(--color-line)]" : ""}`}
               style={{ borderBottom: "1px solid var(--color-line)" }}
             >
-              <div className="relative aspect-[16/10] overflow-hidden" style={{ borderBottom: "1px solid var(--color-line)" }}>
+              <div className={`relative overflow-hidden ${wide ? "aspect-[16/10] md:aspect-[32/9]" : "aspect-[16/10]"}`} style={{ borderBottom: "1px solid var(--color-line)" }}>
                 <Image
                   src={p.img}
                   alt={`${p.name}: ${p.blurb}`}
                   fill
-                  sizes="(min-width: 768px) 50vw, 100vw"
+                  sizes={wide ? "100vw" : "(min-width: 768px) 50vw, 100vw"}
                   className="object-cover transition-transform duration-300 group-hover:scale-[1.03] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
                 />
               </div>
@@ -101,7 +128,8 @@ export function Projects() {
                 )}
               </div>
             </Reveal>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
